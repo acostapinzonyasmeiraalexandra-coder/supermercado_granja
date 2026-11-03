@@ -1,0 +1,367 @@
+
+@charset "UTF-8";
+
+/* ==========================================
+   SUPERMERCADO LA GRANJA
+   Inicio de sesión compacto y moderno
+   ========================================== */
+
+/* 1. COLORES */
+:root {
+    --verde-oscuro: #14532d;
+    --verde: #218344;
+    --verde-claro: #36a852;
+    --texto: #203629;
+    --texto-suave: #718074;
+    --borde: #dce7dc;
+    --fondo-campo: #f7faf6;
+    --blanco: #ffffff;
+}
+
+/* 2. CONFIGURACIÓN GENERAL */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+}
+
+/* 3. FONDO */
+.pagina {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+
+    background-color: #edf5e9;
+
+    background-image:
+        linear-gradient(
+            rgba(10, 35, 18, 0.30),
+            rgba(10, 35, 18, 0.30)
+        ),
+        url("../img/fondo.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Eliminar la ola inferior */
+.pagina::after {
+    display: none;
+}
+
+/* 4. CENTRAR EL FORMULARIO */
+.contenedor {
+    width: 100%;
+    min-height: calc(100vh - 48px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+}
+
+/* Ocultar encabezado y logo */
+.encabezado {
+    display: none;
+}
+
+/* 5. TARJETA */
+.tarjeta {
+    width: 100%;
+    max-width: 360px;
+    margin: auto;
+    padding: 25px 25px 21px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.20);
+}
+
+/* 6. TÍTULO */
+.tarjeta::before {
+    content: "Bienvenido";
+
+    display: block;
+    text-align: center;
+
+    margin: 0 0 20px;
+    padding-bottom: 13px;
+
+    color: var(--verde-oscuro);
+    font-size: 25px;
+    font-weight: 800;
+
+    border-bottom: 1px solid #e4eee1;
+}
+
+/* 7. FORMULARIO */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    width: 100%;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+/* Etiquetas */
+.campo__etiqueta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--verde-oscuro);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Iconos */
+.campo__etiqueta::before {
+    content: "";
+    display: inline-block;
+
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+
+    background-image: url("../img/usuario.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.campo__etiqueta[for="contra"]::before {
+    background-image: url("../img/candado.png");
+}
+
+.campo__etiqueta[for="cargo"]::before {
+    background-image: url("../img/grupo.png");
+}
+
+/* 8. CAMPOS */
+.campo__input,
+.campo__select {
+    display: block;
+    width: 100%;
+    height: 43px;
+    padding: 0 12px;
+
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--texto);
+
+    background-color: var(--fondo-campo);
+
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto al seleccionar */
+.campo__input:focus,
+.campo__select:focus {
+    outline: none;
+    border-color: var(--verde);
+
+    box-shadow: 0 0 0 3px rgba(33, 131, 68, 0.12);
+
+    background-color: var(--blanco);
+}
+
+/* Lista de cargo */
+.campo__select {
+    appearance: none;
+    cursor: pointer;
+
+    background-image: url("img/flecha-select.png");
+    background-position: right 12px center;
+    background-size: 15px;
+    background-repeat: no-repeat;
+}
+
+/* 9. BOTÓN INGRESAR */
+.boton {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.boton--principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    min-height: 45px;
+    margin-top: 3px;
+    padding: 10px 12px;
+
+    color: var(--blanco);
+    font-size: 15px;
+    font-weight: 700;
+
+    background: linear-gradient(
+        120deg,
+        var(--verde),
+        var(--verde-claro)
+    );
+
+    border: none;
+    border-radius: 9px;
+
+    box-shadow: 0 5px 12px rgba(33, 131, 68, 0.20);
+
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.boton--principal:hover {
+    background: linear-gradient(
+        120deg,
+        var(--verde-oscuro),
+        var(--verde)
+    );
+
+    box-shadow: 0 7px 15px rgba(33, 131, 68, 0.25);
+}
+
+/* Iconos del botón */
+.boton--principal::before,
+.boton--principal::after {
+    content: "";
+    display: inline-block;
+
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.boton--principal::before {
+    background-image: url("img/entrar.png");
+}
+
+.boton--principal::after {
+    background-image: url("img/flecha.png");
+}
+
+/* 10. REGISTRO */
+.formulario--registro {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    margin-top: 16px;
+
+    color: var(--texto-suave);
+    font-size: 12px;
+    text-align: center;
+}
+
+.formulario--registro::before {
+    content: "¿Aún no tienes una cuenta?";
+}
+
+.boton--secundario {
+    padding: 2px 0;
+
+    color: var(--verde);
+    font-size: 12px;
+    font-weight: 800;
+
+    background: transparent;
+    border: none;
+}
+
+.boton--secundario:hover {
+    color: var(--verde-oscuro);
+    text-decoration: underline;
+}
+
+/* 11. CELULARES */
+@media (max-width: 480px) {
+    .pagina {
+        padding: 18px 14px;
+        background-position: center;
+    }
+
+    .contenedor {
+        min-height: calc(100vh - 36px);
+    }
+
+    .tarjeta {
+        max-width: 350px;
+        padding: 23px 19px 20px;
+    }
+
+    .tarjeta::before {
+        font-size: 24px;
+        margin-bottom: 17px;
+    }
+}
+
+/* 12. PANTALLAS BAJAS */
+@media (max-height: 580px) {
+    .pagina {
+        align-items: flex-start;
+    }
+
+    .contenedor {
+        min-height: auto;
+    }
+
+    .tarjeta {
+        margin: 8px auto;
+        padding: 18px 22px;
+    }
+
+    .tarjeta::before {
+        margin-bottom: 12px;
+        padding-bottom: 9px;
+    }
+
+    .formulario {
+        gap: 9px;
+    }
+
+    .campo__input,
+    .campo__select {
+        height: 40px;
+    }
+
+    .boton--principal {
+        min-height: 43px;
+    }
+
+    .formulario--registro {
+        margin-top: 11px;
+    }
+}

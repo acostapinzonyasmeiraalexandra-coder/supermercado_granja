@@ -1,0 +1,532 @@
+
+@charset "UTF-8";
+
+/* ==========================================
+   supermercado la granja
+   inicio de sesion compacto y moderno
+   ========================================== */
+
+/* 1. colores */
+:root {
+    /* variable verde oscuro: #14532d */
+    --verde-oscuro: #14532d;
+    /* variable verde: #218344 */
+    --verde: #218344;
+    /* variable verde claro: #36a852 */
+    --verde-claro: #36a852;
+    /* variable texto: #203629 */
+    --texto: #203629;
+    /* variable texto suave: #718074 */
+    --texto-suave: #718074;
+    /* variable borde: #dce7dc */
+    --borde: #dce7dc;
+    /* variable fondo campo: #f7faf6 */
+    --fondo-campo: #f7faf6;
+    /* variable blanco: #ffffff */
+    --blanco: #ffffff;
+}
+
+/* 2. configuracion general */
+* {
+    /* el ancho y el alto incluyen el borde y el espacio interior */
+    box-sizing: border-box;
+}
+
+/* ajustes generales de la pagina */
+html,
+body {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* alto minimo: ocupa todo el espacio disponible */
+    min-height: 100%;
+    /* sin espacio exterior */
+    margin: 0;
+}
+
+/* estilo general del cuerpo de la pagina */
+body {
+    /* tipo de letra: arial, helvetica, sans-serif */
+    font-family: Arial, Helvetica, sans-serif;
+    /* color del texto: el color texto */
+    color: var(--texto);
+}
+
+/* 3. fondo */
+.pagina {
+    /* alto minimo de 100vh */
+    min-height: 100vh;
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* espacio interior: 24px 16px */
+    padding: 24px 16px;
+
+    /* color de fondo: el color #edf5e9 */
+    background-color: #edf5e9;
+
+    /* degradado de fondo */
+    background-image:
+        linear-gradient(
+            rgba(10, 35, 18, 0.30),
+            rgba(10, 35, 18, 0.30)
+        ),
+        url("../img/fondo.png");
+
+    /* tamano de la imagen de fondo: cover */
+    background-size: cover;
+    /* posicion de la imagen de fondo: center */
+    background-position: center;
+    /* la imagen de fondo no se repite */
+    background-repeat: no-repeat;
+}
+
+/* eliminar la ola inferior */
+.pagina::after {
+    /* oculta el elemento */
+    display: none;
+}
+
+/* 4. centrar el formulario */
+.contenedor {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* alto minimo de calc(100vh - 48px) */
+    min-height: calc(100vh - 48px);
+
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+
+    /* sin espacio interior */
+    padding: 0;
+}
+
+/* ocultar encabezado y logo */
+.encabezado {
+    /* oculta el elemento */
+    display: none;
+}
+
+/* 5. tarjeta */
+.tarjeta {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* ancho maximo de 360px */
+    max-width: 360px;
+    /* espacio exterior (auto), auto centra el elemento */
+    margin: auto;
+    /* espacio interior: 25px 25px 21px */
+    padding: 25px 25px 21px;
+
+    /* fondo: el color rgba(255, 255, 255, 0.97) */
+    background: rgba(255, 255, 255, 0.97);
+
+    /* borde: 1px solid rgba(255, 255, 255, 0.8) */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    /* esquinas redondeadas: 18px */
+    border-radius: 18px;
+
+    /* sombra del elemento */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.20);
+}
+
+/* 6. titulo */
+.tarjeta::before {
+    /* texto o elemento que se agrega: "bienvenido" */
+    content: "Bienvenido";
+
+    /* se muestra como bloque completo */
+    display: block;
+    /* texto centrado */
+    text-align: center;
+
+    /* espacio exterior: 0 0 20px */
+    margin: 0 0 20px;
+    /* espacio interior inferior: 13px */
+    padding-bottom: 13px;
+
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+    /* tamano de la letra: 25px */
+    font-size: 25px;
+    /* letra en negrita */
+    font-weight: 800;
+
+    /* borde inferior: 1px solid #e4eee1 */
+    border-bottom: 1px solid #e4eee1;
+}
+
+/* 7. formulario */
+.formulario {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 13px */
+    gap: 13px;
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+}
+
+/* campos del formulario */
+.campo {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 6px */
+    gap: 6px;
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+}
+
+/* etiquetas */
+.campo__etiqueta {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 8px */
+    gap: 8px;
+
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+    /* tamano de la letra: 14px */
+    font-size: 14px;
+    /* letra en negrita */
+    font-weight: 700;
+}
+
+/* iconos */
+.campo__etiqueta::before {
+    /* elemento decorativo vacio */
+    content: "";
+    /* se muestra en linea pero con medidas propias */
+    display: inline-block;
+
+    /* ancho de 17px */
+    width: 17px;
+    /* alto de 17px */
+    height: 17px;
+    /* no se encoge */
+    flex-shrink: 0;
+
+    /* imagen de fondo */
+    background-image: url("../img/usuario.png");
+    /* posicion de la imagen de fondo: center */
+    background-position: center;
+    /* tamano de la imagen de fondo: contain */
+    background-size: contain;
+    /* la imagen de fondo no se repite */
+    background-repeat: no-repeat;
+}
+
+.campo__etiqueta[for="contra"]::before {
+    /* imagen de fondo */
+    background-image: url("../img/candado.png");
+}
+
+.campo__etiqueta[for="cargo"]::before {
+    /* imagen de fondo */
+    background-image: url("../img/grupo.png");
+}
+
+/* 8. campos */
+.campo__input,
+.campo__select {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* alto de 43px */
+    height: 43px;
+    /* espacio interior: 0 12px */
+    padding: 0 12px;
+
+    /* tipo de letra: inherit */
+    font-family: inherit;
+    /* tamano de la letra: 14px */
+    font-size: 14px;
+    /* color del texto: el color texto */
+    color: var(--texto);
+
+    /* color de fondo: el color fondo campo */
+    background-color: var(--fondo-campo);
+
+    /* borde: 1px solid var(--borde) */
+    border: 1px solid var(--borde);
+    /* esquinas redondeadas: 9px */
+    border-radius: 9px;
+
+    /* animacion suave al cambiar: border-color 0.2s, box-shadow 0.2s */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* efecto al seleccionar */
+.campo__input:focus,
+.campo__select:focus {
+    /* quita el contorno que pone el navegador */
+    outline: none;
+    /* color del borde */
+    border-color: var(--verde);
+
+    /* sombra del elemento */
+    box-shadow: 0 0 0 3px rgba(33, 131, 68, 0.12);
+
+    /* color de fondo: el color blanco */
+    background-color: var(--blanco);
+}
+
+/* lista de cargo */
+.campo__select {
+    /* quita el estilo por defecto del navegador */
+    appearance: none;
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+
+    /* imagen de fondo */
+    background-image: url("img/flecha-select.png");
+    /* posicion de la imagen de fondo: right 12px center */
+    background-position: right 12px center;
+    /* tamano de la imagen de fondo: 15px */
+    background-size: 15px;
+    /* la imagen de fondo no se repite */
+    background-repeat: no-repeat;
+}
+
+/* 9. boton ingresar */
+.boton {
+    /* tipo de letra: inherit */
+    font-family: inherit;
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+}
+
+/* boton ingresar */
+.boton--principal {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* alto minimo de 45px */
+    min-height: 45px;
+    /* espacio exterior superior: 3px */
+    margin-top: 3px;
+    /* espacio interior: 10px 12px */
+    padding: 10px 12px;
+
+    /* color del texto: el color blanco */
+    color: var(--blanco);
+    /* tamano de la letra: 15px */
+    font-size: 15px;
+    /* letra en negrita */
+    font-weight: 700;
+
+    /* fondo con degradado */
+    background: linear-gradient(
+        120deg,
+        var(--verde),
+        var(--verde-claro)
+    );
+
+    /* sin borde */
+    border: none;
+    /* esquinas redondeadas: 9px */
+    border-radius: 9px;
+
+    /* sombra del elemento */
+    box-shadow: 0 5px 12px rgba(33, 131, 68, 0.20);
+
+    /* animacion suave al cambiar: background 0.2s, box-shadow 0.2s */
+    transition: background 0.2s, box-shadow 0.2s;
+}
+
+.boton--principal:hover {
+    /* fondo con degradado */
+    background: linear-gradient(
+        120deg,
+        var(--verde-oscuro),
+        var(--verde)
+    );
+
+    /* sombra del elemento */
+    box-shadow: 0 7px 15px rgba(33, 131, 68, 0.25);
+}
+
+/* iconos del boton */
+.boton--principal::before,
+.boton--principal::after {
+    /* elemento decorativo vacio */
+    content: "";
+    /* se muestra en linea pero con medidas propias */
+    display: inline-block;
+
+    /* ancho de 17px */
+    width: 17px;
+    /* alto de 17px */
+    height: 17px;
+    /* no se encoge */
+    flex-shrink: 0;
+
+    /* posicion de la imagen de fondo: center */
+    background-position: center;
+    /* tamano de la imagen de fondo: contain */
+    background-size: contain;
+    /* la imagen de fondo no se repite */
+    background-repeat: no-repeat;
+}
+
+.boton--principal::before {
+    /* imagen de fondo */
+    background-image: url("img/entrar.png");
+}
+
+.boton--principal::after {
+    /* imagen de fondo */
+    background-image: url("img/flecha.png");
+}
+
+/* 10. registro */
+.formulario--registro {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* pasa a la siguiente linea los elementos que no caben */
+    flex-wrap: wrap;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* espacio entre los elementos: 5px */
+    gap: 5px;
+
+    /* espacio exterior superior: 16px */
+    margin-top: 16px;
+
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: 12px */
+    font-size: 12px;
+    /* texto centrado */
+    text-align: center;
+}
+
+.formulario--registro::before {
+    /* texto o elemento que se agrega: "aun no tienes una cuenta?" */
+    content: "¿Aún no tienes una cuenta?";
+}
+
+.boton--secundario {
+    /* espacio interior: 2px 0 */
+    padding: 2px 0;
+
+    /* color del texto: el color verde */
+    color: var(--verde);
+    /* tamano de la letra: 12px */
+    font-size: 12px;
+    /* letra en negrita */
+    font-weight: 800;
+
+    /* fondo: transparente */
+    background: transparent;
+    /* sin borde */
+    border: none;
+}
+
+.boton--secundario:hover {
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+    /* subrayado del texto: underline */
+    text-decoration: underline;
+}
+
+/* 11. celulares */
+@media (max-width: 480px) {
+    .pagina {
+        /* espacio interior: 18px 14px */
+        padding: 18px 14px;
+        /* posicion de la imagen de fondo: center */
+        background-position: center;
+    }
+
+    .contenedor {
+        /* alto minimo de calc(100vh - 36px) */
+        min-height: calc(100vh - 36px);
+    }
+
+    .tarjeta {
+        /* ancho maximo de 350px */
+        max-width: 350px;
+        /* espacio interior: 23px 19px 20px */
+        padding: 23px 19px 20px;
+    }
+
+    .tarjeta::before {
+        /* tamano de la letra: 24px */
+        font-size: 24px;
+        /* espacio exterior inferior: 17px */
+        margin-bottom: 17px;
+    }
+}
+
+/* 12. pantallas bajas */
+@media (max-height: 580px) {
+    .pagina {
+        /* alinea los elementos arriba */
+        align-items: flex-start;
+    }
+
+    .contenedor {
+        /* alto minimo automatico */
+        min-height: auto;
+    }
+
+    .tarjeta {
+        /* espacio exterior (8px auto), auto centra el elemento */
+        margin: 8px auto;
+        /* espacio interior: 18px 22px */
+        padding: 18px 22px;
+    }
+
+    .tarjeta::before {
+        /* espacio exterior inferior: 12px */
+        margin-bottom: 12px;
+        /* espacio interior inferior: 9px */
+        padding-bottom: 9px;
+    }
+
+    .formulario {
+        /* espacio entre los elementos: 9px */
+        gap: 9px;
+    }
+
+    .campo__input,
+    .campo__select {
+        /* alto de 40px */
+        height: 40px;
+    }
+
+    .boton--principal {
+        /* alto minimo de 43px */
+        min-height: 43px;
+    }
+
+    .formulario--registro {
+        /* espacio exterior superior: 11px */
+        margin-top: 11px;
+    }
+}

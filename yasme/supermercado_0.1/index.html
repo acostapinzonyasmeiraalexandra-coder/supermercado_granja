@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermercado La Granja</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="pagina">
+
+    <!-- ========== ENCABEZADO ========== -->
+    <header class="encabezado">
+        <h2 class="encabezado__titulo">Supermercado La Granja</h2>
+    </header>
+
+    <!-- ========== CONTENIDO PRINCIPAL ========== -->
+    <main class="contenedor">
+
+        <!-- Tarjeta del login -->
+        <section class="tarjeta">
+
+            <!-- Formulario de ingreso -->
+            <form class="formulario" action="usuario.php" method="POST">
+
+                <!-- Cargo -->
+                <div class="campo">
+                    <label class="campo__etiqueta" for="cargo">Cargo:</label>
+                    <select class="campo__select" id="cargo" name="cargo" required>
+                        <option value="">seleccione</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Empleado</option>
+                    </select>
+                </div>
+
+                <!-- Usuario -->
+                <div class="campo">
+                    <label class="campo__etiqueta" for="usuario">Usuario:</label>
+                    <input class="campo__input" type="text" id="usuario" name="usuario" required>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="campo">
+                    <label class="campo__etiqueta" for="contra">Contraseña:</label>
+                    <input class="campo__input" type="password" id="contra" name="contra" required>
+                </div>
+
+                <!-- Botón ingresar -->
+                <button class="boton boton--principal" type="submit" name="ingresar">Ingresar</button>
+
+            </form>
+
+            <!-- Formulario de registro -->
+            <form class="formulario formulario--registro" action="registro.php">
+                <button class="boton boton--secundario">Registrarse</button>
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

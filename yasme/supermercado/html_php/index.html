@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermercado La Granja</title>
+</head>
+<body>
+
+        <h2>Supermercado La Granja</h2>
+
+       <form action="usuario.php" method="POST">
+
+            <label>Cargo:</label><br>
+            <select name="cargo" required>
+
+                <option value="">seleccione</option>
+                <option  value ="1">Administrador</option>
+                <option value ="2">Empleado</option>
+    
+
+            </select><br><br>
+
+            <label>Usuario:</label>
+            <input type="text" name="usuario" required>
+
+            <br><br>
+
+            <label>Contraseña:</label>
+            <input type="password" name="contra" required>
+
+             <br><br>
+
+             <button type="submit" name="ingresar">Ingresar</button>
+             
+        
+             
+         
+
+      </form><br><br>
+      <form action="registro.php">
+   
+                <button>Registrarse</button>
+
+        </form>
+      
+    
+</body>
+</html>
