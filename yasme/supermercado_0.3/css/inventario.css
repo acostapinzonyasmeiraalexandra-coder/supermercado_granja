@@ -1,0 +1,1866 @@
+
+/* colores principales del sistema */
+:root {
+    /* variable lateral arriba: #f0fdf4 */
+    --lateral-arriba: #f0fdf4;
+    /* variable lateral abajo: #dcfce7 */
+    --lateral-abajo: #dcfce7;
+    /* variable lateral texto: #14532d */
+    --lateral-texto: #14532d;
+    /* variable lateral hover: #d1fae5 */
+    --lateral-hover: #d1fae5;
+
+    /* variable verde: #16a34a */
+    --verde: #16a34a;
+    /* variable verde oscuro: #15803d */
+    --verde-oscuro: #15803d;
+    /* variable verde suave: #dcfce7 */
+    --verde-suave: #dcfce7;
+    /* variable fondo pagina: #f0fdf4 */
+    --fondo-pagina: #f0fdf4;
+    /* variable blanco: #ffffff */
+    --blanco: #ffffff;
+    /* variable texto: #166534 */
+    --texto: #166534;
+    /* variable texto suave: #4b5563 */
+    --texto-suave: #4b5563;
+    /* variable borde: #bbf7d0 */
+    --borde: #bbf7d0;
+
+    /* variable azul: #2563eb */
+    --azul: #2563eb;
+    /* variable naranja: #ea580c */
+    --naranja: #ea580c;
+    /* variable rojo: #dc2626 */
+    --rojo: #dc2626;
+    /* variable morado: #9333ea */
+    --morado: #9333ea;
+    /* variable turquesa: #0d9488 */
+    --turquesa: #0d9488;
+    /* variable rosa: #db2777 */
+    --rosa: #db2777;
+    /* variable gris: #4b5563 */
+    --gris: #4b5563;
+
+    /* variable ancho lateral: 290px */
+    --ancho-lateral: 290px;
+    /* variable redondeo: 16px */
+    --redondeo: 16px;
+    /* variable sombra: 0 4px 14px rgba(0, 0, 0, 0.08) */
+    --sombra: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* ajustes generales de la pagina */
+* {
+    /* el ancho y el alto incluyen el borde y el espacio interior */
+    box-sizing: border-box;
+    /* sin espacio exterior */
+    margin: 0;
+    /* sin espacio interior */
+    padding: 0;
+}
+
+/* ajustes generales de la pagina */
+html {
+    /* desplazamiento suave */
+    scroll-behavior: smooth;
+}
+
+/* estilo general del cuerpo de la pagina */
+body.pagina-inventario {
+    /* alto minimo de 100vh */
+    min-height: 100vh;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* fondo: el color fondo pagina */
+    background: var(--fondo-pagina);
+    /* color del texto: el color #243b2b */
+    color: #243b2b;
+    /* tipo de letra: "segoe ui", system-ui, -apple-system, sans... */
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    /* alto de cada linea de texto: 1.5 */
+    line-height: 1.5;
+}
+
+/* se mantiene la misma letra en los campos */
+button,
+input,
+select,
+textarea {
+    /* usa la misma letra del contenedor */
+    font: inherit;
+}
+
+button,
+a {
+    /* quita el resaltado al tocar en el celular */
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+}
+
+/* se marca el elemento que tiene el teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    /* contorno del elemento: 3px solid var(--verde) */
+    outline: 3px solid var(--verde);
+    /* distancia entre el contorno y el elemento: 2px */
+    outline-offset: 2px;
+}
+
+/* tamano de los iconos */
+.icono {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho de 22px */
+    width: 22px;
+    /* alto de 22px */
+    height: 22px;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+}
+
+/* evita mover la pagina con el menu abierto */
+body.menu-abierto {
+    /* oculta lo que se sale del elemento */
+    overflow: hidden;
+}
+
+/* encabezado superior */
+.encabezado {
+    /* se queda pegado al hacer scroll */
+    position: sticky;
+    /* distancia de 0 desde el borde superior */
+    top: 0;
+    /* nivel de capa 30 (mientras mas alto queda mas encima) */
+    z-index: 30;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 14px */
+    gap: 14px;
+    /* espacio interior: 12px 24px */
+    padding: 12px 24px;
+    /* fondo: el color blanco */
+    background: var(--blanco);
+    /* borde inferior: 1px solid var(--borde) */
+    border-bottom: 1px solid var(--borde);
+    /* sombra del elemento */
+    box-shadow: var(--sombra);
+}
+
+/* boton para abrir el menu */
+.boton-menu {
+    /* ancho de 44px */
+    width: 44px;
+    /* alto de 44px */
+    height: 44px;
+    /* no se encoge */
+    flex-shrink: 0;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* sin borde */
+    border: none;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: el color verde */
+    background: var(--verde);
+    /* color del texto: el color blanco */
+    color: var(--blanco);
+    /* animacion suave al cambiar: background 0.2s */
+    transition: background 0.2s;
+}
+
+.boton-menu:hover {
+    /* fondo: el color verde oscuro */
+    background: var(--verde-oscuro);
+}
+
+.boton-menu .icono {
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+/* logo del encabezado */
+.encabezado-logo img {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho de 46px */
+    width: 46px;
+    /* alto de 46px */
+    height: 46px;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+}
+
+/* nombre y descripcion del sistema */
+.encabezado-texto h1 {
+    /* tamano de la letra: 1.1rem */
+    font-size: 1.1rem;
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+}
+
+.encabezado-texto p {
+    /* tamano de la letra: 0.85rem */
+    font-size: 0.85rem;
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+}
+
+/* datos del usuario en la parte superior */
+.encabezado-usuario {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+    /* espacio exterior izquierdo: auto */
+    margin-left: auto;
+}
+
+/* inicial del usuario */
+.usuario-inicial {
+    /* ancho de 40px */
+    width: 40px;
+    /* alto de 40px */
+    height: 40px;
+    /* no se encoge */
+    flex-shrink: 0;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* forma circular */
+    border-radius: 50%;
+    /* fondo: el color verde */
+    background: var(--verde);
+    /* color del texto: el color blanco */
+    color: var(--blanco);
+    /* letra en negrita */
+    font-weight: bold;
+}
+
+/* estilos de usuario grande */
+.usuario-grande {
+    /* ancho de 48px */
+    width: 48px;
+    /* alto de 48px */
+    height: 48px;
+    /* tamano de la letra: 1.1rem */
+    font-size: 1.1rem;
+}
+
+/* datos del usuario en el encabezado */
+.encabezado-usuario p {
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: 0.85rem */
+    font-size: 0.85rem;
+}
+
+/* fondo que aparece al abrir el menu */
+.fondo-menu {
+    /* queda fijo en la pantalla */
+    position: fixed;
+    /* distancia a los cuatro bordes: 0 */
+    inset: 0;
+    /* nivel de capa 40 (mientras mas alto queda mas encima) */
+    z-index: 40;
+    /* fondo: el color rgba(0, 0, 0, 0.4) */
+    background: rgba(0, 0, 0, 0.4);
+    /* transparencia (1 se ve normal, 0 invisible): 0 */
+    opacity: 0;
+    /* visibilidad: hidden */
+    visibility: hidden;
+    /* no responde a clics */
+    pointer-events: none;
+    /* animacion suave al cambiar: opacity 0.3s, visibility 0.3s */
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* estado del menu lateral cuando esta abierto */
+body.menu-abierto .fondo-menu {
+    /* transparencia (1 se ve normal, 0 invisible): 1 */
+    opacity: 1;
+    /* visibilidad: visible */
+    visibility: visible;
+    /* respuesta a clics: auto */
+    pointer-events: auto;
+}
+
+/* menu lateral en verde menta */
+.menu-lateral {
+    /* queda fijo en la pantalla */
+    position: fixed;
+    /* distancia de 0 desde el borde superior */
+    top: 0;
+    /* distancia de 0 desde el borde izquierdo */
+    left: 0;
+    /* distancia de 0 desde el borde inferior */
+    bottom: 0;
+    /* nivel de capa 50 (mientras mas alto queda mas encima) */
+    z-index: 50;
+    /* ancho de var(--ancho-lateral) */
+    width: var(--ancho-lateral);
+    /* ancho maximo de 85vw */
+    max-width: 85vw;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 18px */
+    gap: 18px;
+    /* espacio interior: 22px 18px */
+    padding: 22px 18px;
+    /* scroll vertical si el contenido no cabe */
+    overflow-y: auto;
+    /* fondo con degradado */
+    background: linear-gradient(180deg, #f0fdf4 0%, #e6f9ec 50%, #dcfce7 100%);
+    /* color del texto: el color lateral texto */
+    color: var(--lateral-texto);
+    /* borde derecho: 1px solid #bbf7d0 */
+    border-right: 1px solid #bbf7d0;
+    /* esquinas redondeadas: 0 22px 22px 0 */
+    border-radius: 0 22px 22px 0;
+    /* sombra del elemento */
+    box-shadow: 6px 0 28px rgba(20, 83, 45, 0.12);
+    /* mueve, gira o cambia el tamano del elemento: translatex(-105%) */
+    transform: translateX(-105%);
+    /* animacion suave al cambiar: transform 0.3s ease */
+    transition: transform 0.3s ease;
+}
+
+/* muestra el menu cuando esta abierto */
+body.menu-abierto .menu-lateral {
+    /* mueve, gira o cambia el tamano del elemento: translatex(0) */
+    transform: translateX(0);
+}
+
+/* parte superior del menu lateral */
+.menu-lateral-encabezado {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* separa los elementos dejando espacio entre ellos */
+    justify-content: space-between;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+}
+
+/* logo y nombre dentro del menu lateral */
+.menu-lateral-marca {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+    /* ancho minimo: 0, permite que se encoja */
+    min-width: 0;
+}
+
+.menu-lateral-marca img {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho de 46px */
+    width: 46px;
+    /* alto de 46px */
+    height: 46px;
+    /* como crece o se encoge dentro del contenedor (0 0 46px) */
+    flex: 0 0 46px;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+}
+
+.menu-lateral-marca h2 {
+    /* sin espacio exterior */
+    margin: 0;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 0.95rem */
+    font-size: 0.95rem;
+    /* alto de cada linea de texto: 1.25 */
+    line-height: 1.25;
+}
+
+.menu-lateral-marca p {
+    /* espacio exterior: 2px 0 0 */
+    margin: 2px 0 0;
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 1.05rem */
+    font-size: 1.05rem;
+    /* letra en negrita */
+    font-weight: 800;
+    /* alto de cada linea de texto: 1.2 */
+    line-height: 1.2;
+}
+
+/* boton para cerrar el menu */
+.boton-cerrar {
+    /* ancho de 38px */
+    width: 38px;
+    /* alto de 38px */
+    height: 38px;
+    /* no se encoge */
+    flex-shrink: 0;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0;
+    /* forma circular */
+    border-radius: 50%;
+    /* fondo: el color #ffffff */
+    background: #ffffff;
+    /* color del texto: el color #166534 */
+    color: #166534;
+}
+
+.boton-cerrar:hover {
+    /* fondo: el color #d1fae5 */
+    background: #d1fae5;
+}
+
+.boton-cerrar .icono {
+    /* efecto visual sobre el elemento: brightness(0) saturate(100%) invert(24%) s... */
+    filter: brightness(0) saturate(100%) invert(24%) sepia(28%) saturate(1200%) hue-rotate(83deg);
+}
+
+/* tarjeta con los datos del usuario */
+.menu-lateral-usuario {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 12px */
+    gap: 12px;
+    /* espacio interior: 14px */
+    padding: 14px;
+    /* esquinas redondeadas: var(--redondeo) */
+    border-radius: var(--redondeo);
+    /* fondo: el color #e6f9ec */
+    background: #e6f9ec;
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+}
+
+.menu-lateral-usuario strong {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+}
+
+.menu-lateral-usuario p {
+    /* color del texto: el color #4b6352 */
+    color: #4b6352;
+    /* tamano de la letra: 0.9rem */
+    font-size: 0.9rem;
+}
+
+.menu-lateral .menu-lateral-usuario .usuario-inicial {
+    /* fondo: el color #16a34a */
+    background: #16a34a;
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+}
+
+/* espacio de los enlaces del menu */
+.navegacion {
+    /* como crece o se encoge dentro del contenedor (1) */
+    flex: 1;
+}
+
+/* titulo de la lista de enlaces del menu */
+.titulo-navegacion {
+    /* espacio exterior inferior: 10px */
+    margin-bottom: 10px;
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 0.75rem */
+    font-size: 0.75rem;
+    /* letra en negrita */
+    font-weight: bold;
+    /* espacio entre letras: 1px */
+    letter-spacing: 1px;
+}
+
+/* enlaces del menu lateral */
+.lista-navegacion {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 6px */
+    gap: 6px;
+}
+
+/* estilo de cada opcion del menu */
+.enlace-menu {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 12px */
+    gap: 12px;
+    /* espacio interior: 10px 12px */
+    padding: 10px 12px;
+    /* borde: 1px solid transparent */
+    border: 1px solid transparent;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: transparente */
+    background: transparent;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tipo de letra: inherit */
+    font-family: inherit;
+    /* tamano de la letra: 1rem */
+    font-size: 1rem;
+    /* grosor de la letra: 500 */
+    font-weight: 500;
+    /* texto a la izquierda */
+    text-align: left;
+    /* sin subrayado */
+    text-decoration: none;
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+    /* animacion suave al cambiar: background 0.2s, color 0.2s, border-color ... */
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.enlace-menu:hover {
+    /* fondo: el color #d1fae5 */
+    background: #d1fae5;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+}
+
+/* resalta la pagina seleccionada */
+.enlace-menu.activo {
+    /* fondo: el color #dcfce7 */
+    background: #dcfce7;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* color del borde */
+    border-color: #86efac;
+    /* letra en negrita */
+    font-weight: 700;
+    /* sombra del elemento */
+    box-shadow: 0 3px 10px rgba(20, 83, 45, 0.08);
+}
+
+/* cuadros de los iconos del menu */
+.caja-icono {
+    /* ancho de 36px */
+    width: 36px;
+    /* alto de 36px */
+    height: 36px;
+    /* como crece o se encoge dentro del contenedor (0 0 36px) */
+    flex: 0 0 36px;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+    /* fondo: el color #16a34a */
+    background: #16a34a;
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+}
+
+.caja-icono img,
+.caja-icono svg,
+.caja-icono .icono {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho de 21px */
+    width: 21px;
+    /* alto de 21px */
+    height: 21px;
+    /* ancho maximo: ocupa todo el espacio disponible */
+    max-width: 100%;
+    /* alto maximo: ocupa todo el espacio disponible */
+    max-height: 100%;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+}
+
+/* colores diferentes para cada opcion */
+.lista-navegacion > .enlace-menu:nth-of-type(1) .caja-icono {
+    /* fondo: el color #2563eb */
+    background: #2563eb;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(2) .caja-icono {
+    /* fondo: el color #0d9488 */
+    background: #0d9488;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(3) .caja-icono {
+    /* fondo: el color #dc2626 */
+    background: #dc2626;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(4) .caja-icono {
+    /* fondo: el color #16a34a */
+    background: #16a34a;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(5) .caja-icono {
+    /* fondo: el color #ea580c */
+    background: #ea580c;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(6) .caja-icono {
+    /* fondo: el color #7c3aed */
+    background: #7c3aed;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(7) .caja-icono {
+    /* fondo: el color #0d9488 */
+    background: #0d9488;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(8) .caja-icono {
+    /* fondo: el color #db2777 */
+    background: #db2777;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(9) .caja-icono {
+    /* fondo: el color #4f46e5 */
+    background: #4f46e5;
+}
+
+/* deja los iconos en blanco */
+.lista-navegacion .enlace-menu .caja-icono img.icono {
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+.lista-navegacion .enlace-menu .caja-icono svg {
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+    /* color del trazo del icono */
+    stroke: #ffffff;
+}
+
+/* boton para cerrar sesion */
+.form-salir {
+    /* espacio exterior superior: auto */
+    margin-top: auto;
+}
+
+.boton-salir {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+    /* espacio interior: 12px */
+    padding: 12px;
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: el color #dcfce7 */
+    background: #dcfce7;
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* letra en negrita */
+    font-weight: bold;
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+    /* animacion suave al cambiar: background 0.2s, color 0.2s */
+    transition: background 0.2s, color 0.2s;
+}
+
+.boton-salir:hover {
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #b91c1c */
+    color: #b91c1c;
+}
+
+.boton-salir .caja-icono-roja {
+    /* fondo: el color #dc2626 */
+    background: #dc2626;
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+}
+
+.boton-salir .icono {
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+/* contenido principal de la pagina */
+.contenido {
+    /* como crece o se encoge dentro del contenedor (1) */
+    flex: 1;
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* ancho maximo de 1150px */
+    max-width: 1150px;
+    /* espacio exterior (0 auto), auto centra el elemento */
+    margin: 0 auto;
+    /* espacio interior: 32px 24px */
+    padding: 32px 24px;
+}
+
+/* titulo del modulo */
+.titulo-pagina {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 14px */
+    gap: 14px;
+    /* espacio exterior inferior: 24px */
+    margin-bottom: 24px;
+}
+
+.titulo-pagina h2 {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 1.8rem */
+    font-size: 1.8rem;
+    /* alto de cada linea de texto: 1.2 */
+    line-height: 1.2;
+}
+
+.titulo-pagina p {
+    /* color del texto: el color #4b6352 */
+    color: #4b6352;
+}
+
+/* cuadro del icono del titulo */
+.titulo-icono {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* como crece o se encoge dentro del contenedor (0 0 56px) */
+    flex: 0 0 56px;
+    /* ancho de 56px */
+    width: 56px;
+    /* alto de 56px */
+    height: 56px;
+    /* esquinas redondeadas: 14px */
+    border-radius: 14px;
+    /* fondo: el color #0d9488 */
+    background: #0d9488;
+}
+
+.titulo-icono .icono {
+    /* ancho de 32px */
+    width: 32px;
+    /* alto de 32px */
+    height: 32px;
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+/* mensajes que aparecen despues de una accion */
+.mensaje {
+    /* espacio exterior inferior: 20px */
+    margin-bottom: 20px;
+    /* espacio interior: 12px 16px */
+    padding: 12px 16px;
+    /* borde izquierdo: 4px solid var(--verde) */
+    border-left: 4px solid var(--verde);
+    /* esquinas redondeadas: 8px */
+    border-radius: 8px;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+.mensaje-ok,
+.mensaje-bien {
+    /* border-left-color: #16a34a */
+    border-left-color: #16a34a;
+    /* fondo: el color #dcfce7 */
+    background: #dcfce7;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+}
+
+.mensaje-error {
+    /* border-left-color: #dc2626 */
+    border-left-color: #dc2626;
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #991b1b */
+    color: #991b1b;
+}
+
+/* pie de pagina */
+.pie-pagina {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* espacio exterior superior: 30px */
+    margin-top: 30px;
+    /* color de fondo: el color #ffffff */
+    background-color: #ffffff;
+    /* borde superior: 2px solid #bbf7d0 */
+    border-top: 2px solid #bbf7d0;
+}
+
+/* organiza las secciones del pie de pagina */
+.footer-contenido {
+    /* usa una cuadricula para acomodar los elementos */
+    display: grid;
+    /* define las columnas de la cuadricula: 1fr 1fr */
+    grid-template-columns: 1fr 1fr;
+    /* espacio entre los elementos: 60px */
+    gap: 60px;
+    /* espacio interior: 30px */
+    padding: 30px;
+}
+
+.footer-ayuda h4,
+.footer-informacion h4 {
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 15px */
+    font-size: 15px;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+    /* espacio exterior: 0 0 18px */
+    margin: 0 0 18px;
+}
+
+.footer-descripcion {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+    /* alto de cada linea de texto: 1.7 */
+    line-height: 1.7;
+    /* ancho maximo de 400px */
+    max-width: 400px;
+    /* espacio exterior: 0 0 18px */
+    margin: 0 0 18px;
+}
+
+.footer-ayuda {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* alinea los elementos arriba */
+    align-items: flex-start;
+}
+
+/* enlaces de ayuda */
+.footer-enlace {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+    /* espacio exterior inferior: 13px */
+    margin-bottom: 13px;
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+    /* sin subrayado */
+    text-decoration: none;
+    /* animacion suave al cambiar: color 0.2s ease */
+    transition: color 0.2s ease;
+}
+
+.footer-enlace:hover {
+    /* color del texto: el color #15803d */
+    color: #15803d;
+    /* subrayado del texto: underline */
+    text-decoration: underline;
+}
+
+/* iconos de los enlaces del pie */
+.footer-icono {
+    /* usa flexbox en linea para acomodar los elementos */
+    display: inline-flex;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* ancho de 22px */
+    width: 22px;
+    /* ancho minimo de 22px */
+    min-width: 22px;
+    /* color del texto: el color #16a34a */
+    color: #16a34a;
+    /* tamano de la letra: 17px */
+    font-size: 17px;
+}
+
+/* informacion del pie de pagina */
+.footer-informacion > p {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+    /* alto de cada linea de texto: 1.7 */
+    line-height: 1.7;
+    /* espacio exterior: 0 0 17px */
+    margin: 0 0 17px;
+}
+
+.footer-informacion strong {
+    /* color del texto: el color #374151 */
+    color: #374151;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+/* nota informativa del sistema */
+.footer-nota {
+    /* espacio exterior superior: 20px */
+    margin-top: 20px;
+    /* espacio interior: 15px 18px */
+    padding: 15px 18px;
+    /* fondo: el color #f0fdf4 */
+    background: #f0fdf4;
+    /* borde: 1px solid #dcfce7 */
+    border: 1px solid #dcfce7;
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+}
+
+.footer-nota strong {
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+}
+
+.footer-nota p {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 12px */
+    font-size: 12px;
+    /* alto de cada linea de texto: 1.6 */
+    line-height: 1.6;
+    /* espacio exterior: 7px 0 0 */
+    margin: 7px 0 0;
+}
+
+/* parte final del pie de pagina */
+.footer-inferior {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* separa los elementos dejando espacio entre ellos */
+    justify-content: space-between;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 15px */
+    gap: 15px;
+    /* espacio interior: 16px 30px */
+    padding: 16px 30px;
+    /* borde superior: 1px solid #bbf7d0 */
+    border-top: 1px solid #bbf7d0;
+    /* fondo: el color #ffffff */
+    background: #ffffff;
+}
+
+.footer-inferior p {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 12px */
+    font-size: 12px;
+    /* alto de cada linea de texto: 1.6 */
+    line-height: 1.6;
+    /* sin espacio exterior */
+    margin: 0;
+}
+
+/* ajustes para pantallas pequenas */
+@media (max-width: 700px) {
+    .encabezado {
+        /* espacio entre los elementos: 10px */
+        gap: 10px;
+        /* espacio interior: 10px 14px */
+        padding: 10px 14px;
+    }
+
+    .encabezado-texto {
+        /* como crece o se encoge dentro del contenedor (1) */
+        flex: 1;
+    }
+
+    .encabezado-texto h1 {
+        /* tamano de la letra: 1rem */
+        font-size: 1rem;
+    }
+
+    .encabezado-usuario > div {
+        /* oculta el elemento */
+        display: none;
+    }
+
+    .contenido {
+        /* espacio interior: 24px 14px */
+        padding: 24px 14px;
+    }
+
+    .titulo-pagina h2 {
+        /* tamano de la letra: 1.5rem */
+        font-size: 1.5rem;
+    }
+
+    .footer-contenido {
+        /* define las columnas de la cuadricula: 1fr */
+        grid-template-columns: 1fr;
+        /* espacio entre los elementos: 30px */
+        gap: 30px;
+        /* espacio interior: 25px 18px */
+        padding: 25px 18px;
+    }
+
+    .footer-inferior {
+        /* acomoda los elementos en columna */
+        flex-direction: column;
+        /* texto centrado */
+        text-align: center;
+        /* espacio interior: 15px 20px */
+        padding: 15px 20px;
+    }
+}
+
+/* ajustes para celulares */
+@media (max-width: 480px) {
+    .menu-lateral {
+        /* ancho de 280px */
+        width: 280px;
+        /* ancho maximo de 85vw */
+        max-width: 85vw;
+        /* espacio interior: 18px 14px */
+        padding: 18px 14px;
+    }
+
+    .encabezado-logo img {
+        /* ancho de 38px */
+        width: 38px;
+        /* alto de 38px */
+        height: 38px;
+    }
+
+    .titulo-icono {
+        /* tamano base antes de crecer o encogerse: 46px */
+        flex-basis: 46px;
+        /* ancho de 46px */
+        width: 46px;
+        /* alto de 46px */
+        height: 46px;
+    }
+
+    .titulo-icono .icono {
+        /* ancho de 27px */
+        width: 27px;
+        /* alto de 27px */
+        height: 27px;
+    }
+
+    .footer-contenido {
+        /* espacio interior: 22px 16px */
+        padding: 22px 16px;
+    }
+}
+
+/* mantiene el diseno del menu en este modulo */
+body.pagina-inventario .menu-lateral {
+    /* fondo con degradado */
+    background: linear-gradient(180deg, #f0fdf4 0%, #e6f9ec 50%, #dcfce7 100%) !important;
+    /* color del texto: el color #14532d */
+    color: #14532d !important;
+    /* borde derecho: 1px solid #bbf7d0 */
+    border-right: 1px solid #bbf7d0 !important;
+    /* sombra del elemento */
+    box-shadow: 6px 0 28px rgba(20, 83, 45, 0.12) !important;
+}
+
+/* logo y nombre dentro del menu lateral */
+body.pagina-inventario .menu-lateral-marca h2,
+body.pagina-inventario .menu-lateral-marca p,
+body.pagina-inventario .titulo-navegacion,
+body.pagina-inventario .enlace-menu,
+body.pagina-inventario .menu-lateral-usuario strong {
+    /* color del texto: el color #14532d */
+    color: #14532d !important;
+}
+
+/* datos del usuario dentro del menu lateral */
+body.pagina-inventario .menu-lateral-usuario {
+    /* fondo: el color #e6f9ec */
+    background: #e6f9ec !important;
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0 !important;
+}
+
+/* enlaces del menu lateral */
+body.pagina-inventario .lista-navegacion > .enlace-menu {
+    /* fondo: transparente */
+    background: transparent;
+    /* color del texto: el color #14532d */
+    color: #14532d !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu:hover {
+    /* fondo: el color #d1fae5 */
+    background: #d1fae5 !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu.activo {
+    /* fondo: el color #dcfce7 */
+    background: #dcfce7 !important;
+    /* color del borde */
+    border-color: #86efac !important;
+    /* color del texto: el color #14532d */
+    color: #14532d !important;
+}
+
+/* conserva los colores de los iconos del menu */
+body.pagina-inventario .lista-navegacion > .enlace-menu:nth-of-type(1) .caja-icono {
+    /* fondo: el color #2563eb */
+    background: #2563eb !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu:nth-of-type(2) .caja-icono {
+    /* fondo: el color #0d9488 */
+    background: #0d9488 !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu:nth-of-type(3) .caja-icono {
+    /* fondo: el color #dc2626 */
+    background: #dc2626 !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu:nth-of-type(4) .caja-icono {
+    /* fondo: el color #16a34a */
+    background: #16a34a !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu:nth-of-type(5) .caja-icono {
+    /* fondo: el color #ea580c */
+    background: #ea580c !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu:nth-of-type(6) .caja-icono {
+    /* fondo: el color #7c3aed */
+    background: #7c3aed !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu:nth-of-type(7) .caja-icono {
+    /* fondo: el color #0d9488 */
+    background: #0d9488 !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu:nth-of-type(8) .caja-icono {
+    /* fondo: el color #db2777 */
+    background: #db2777 !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu:nth-of-type(9) .caja-icono {
+    /* fondo: el color #4f46e5 */
+    background: #4f46e5 !important;
+}
+
+/* deja blanco el icono de la opcion activa */
+body.pagina-inventario .lista-navegacion > .enlace-menu.activo .caja-icono {
+    /* color del texto: el color #ffffff */
+    color: #ffffff !important;
+}
+
+body.pagina-inventario .lista-navegacion > .enlace-menu.activo .caja-icono img.icono {
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1) !important;
+}
+
+/* tarjetas con los datos generales del inventario */
+.resumen-inventario {
+    /* usa una cuadricula para acomodar los elementos */
+    display: grid;
+    /* define las columnas de la cuadricula: repeat(3, 1fr) */
+    grid-template-columns: repeat(3, 1fr);
+    /* espacio entre los elementos: 18px */
+    gap: 18px;
+    /* espacio exterior inferior: 25px */
+    margin-bottom: 25px;
+}
+
+.tarjeta-resumen {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 15px */
+    gap: 15px;
+    /* espacio interior: 20px */
+    padding: 20px;
+    /* fondo: el color #fff */
+    background: #fff;
+    /* borde: 1px solid var(--borde) */
+    border: 1px solid var(--borde);
+    /* borde superior: 5px solid var(--verde) */
+    border-top: 5px solid var(--verde);
+    /* esquinas redondeadas: var(--redondeo) */
+    border-radius: var(--redondeo);
+    /* sombra del elemento */
+    box-shadow: var(--sombra);
+}
+
+/* icono de cada tarjeta */
+.resumen-icono {
+    /* ancho de 48px */
+    width: 48px;
+    /* alto de 48px */
+    height: 48px;
+    /* no se encoge */
+    flex-shrink: 0;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: el color verde suave */
+    background: var(--verde-suave);
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+    /* tamano de la letra: 24px */
+    font-size: 24px;
+}
+
+.tarjeta-resumen p {
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: .9rem */
+    font-size: .9rem;
+}
+
+.tarjeta-resumen h3 {
+    /* espacio exterior superior: 3px */
+    margin-top: 3px;
+    /* tamano de la letra: 1.7rem */
+    font-size: 1.7rem;
+}
+
+/* color de la tarjeta azul */
+.tarjeta-azul {
+    /* border-top-color: #2563eb */
+    border-top-color: #2563eb;
+}
+
+/* tarjetas de resumen */
+.tarjeta-azul .resumen-icono {
+    /* fondo: el color #dbeafe */
+    background: #dbeafe;
+    /* color del texto: el color #2563eb */
+    color: #2563eb;
+}
+
+/* color de la tarjeta roja */
+.tarjeta-roja {
+    /* border-top-color: #dc2626 */
+    border-top-color: #dc2626;
+}
+
+/* tarjetas de resumen */
+.tarjeta-roja .resumen-icono {
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #dc2626 */
+    color: #dc2626;
+}
+
+/* paneles donde se muestra la informacion */
+.panel-inventario {
+    /* espacio exterior inferior: 25px */
+    margin-bottom: 25px;
+    /* espacio interior: 22px */
+    padding: 22px;
+    /* fondo: el color #fff */
+    background: #fff;
+    /* borde: 1px solid var(--borde) */
+    border: 1px solid var(--borde);
+    /* esquinas redondeadas: var(--redondeo) */
+    border-radius: var(--redondeo);
+    /* sombra del elemento */
+    box-shadow: var(--sombra);
+}
+
+/* encabezado de la pagina */
+.panel-encabezado {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* separa los elementos dejando espacio entre ellos */
+    justify-content: space-between;
+    /* espacio entre los elementos: 15px */
+    gap: 15px;
+    /* espacio exterior inferior: 20px */
+    margin-bottom: 20px;
+}
+
+.panel-encabezado h3 {
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+    /* tamano de la letra: 1.15rem */
+    font-size: 1.15rem;
+}
+
+.panel-encabezado p {
+    /* espacio exterior superior: 4px */
+    margin-top: 4px;
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: .88rem */
+    font-size: .88rem;
+}
+
+/* cantidad de registros encontrados */
+.contador {
+    /* no se encoge */
+    flex-shrink: 0;
+    /* espacio interior: 7px 12px */
+    padding: 7px 12px;
+    /* esquinas redondeadas: 20px */
+    border-radius: 20px;
+    /* fondo: el color #dbeafe */
+    background: #dbeafe;
+    /* color del texto: el color #1d4ed8 */
+    color: #1d4ed8;
+    /* tamano de la letra: .82rem */
+    font-size: .82rem;
+    /* letra en negrita */
+    font-weight: bold;
+}
+
+/* estilos de contador alertas */
+.contador-alertas {
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #b91c1c */
+    color: #b91c1c;
+}
+
+/* organiza el campo y los botones de busqueda */
+.form-busqueda {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* pasa a la siguiente linea los elementos que no caben */
+    flex-wrap: wrap;
+    /* alinea los elementos abajo */
+    align-items: flex-end;
+    /* espacio entre los elementos: 12px */
+    gap: 12px;
+}
+
+/* buscador */
+.campo-busqueda {
+    /* como crece o se encoge dentro del contenedor (1) */
+    flex: 1;
+    /* ancho minimo de 220px */
+    min-width: 220px;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 7px */
+    gap: 7px;
+}
+
+.campo-busqueda label {
+    /* tamano de la letra: .9rem */
+    font-size: .9rem;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+/* campo donde se escribe el producto */
+.campo-busqueda input {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* alto minimo de 44px */
+    min-height: 44px;
+    /* espacio interior: 10px 13px */
+    padding: 10px 13px;
+    /* borde: 1px solid var(--borde) */
+    border: 1px solid var(--borde);
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+    /* quita el contorno que pone el navegador */
+    outline: none;
+    /* animacion suave al cambiar: border-color .2s, box-shadow .2s */
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.campo-busqueda input:focus {
+    /* color del borde */
+    border-color: var(--verde);
+    /* sombra del elemento */
+    box-shadow: 0 0 0 3px #16a34a1f;
+}
+
+/* estilo general de los botones */
+.boton {
+    /* alto minimo de 44px */
+    min-height: 44px;
+    /* usa flexbox en linea para acomodar los elementos */
+    display: inline-flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* espacio interior: 10px 18px */
+    padding: 10px 18px;
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+    /* sin subrayado */
+    text-decoration: none;
+    /* animacion suave al cambiar: background .2s */
+    transition: background .2s;
+}
+
+/* boton para buscar productos */
+.boton-buscar {
+    /* borde: 1px solid var(--verde) */
+    border: 1px solid var(--verde);
+    /* fondo: el color verde */
+    background: var(--verde);
+    /* color del texto: el color #fff */
+    color: #fff;
+}
+
+.boton-buscar:hover {
+    /* fondo: el color verde oscuro */
+    background: var(--verde-oscuro);
+}
+
+/* boton para mostrar todos los productos */
+.boton-limpiar {
+    /* borde: 1px solid var(--borde) */
+    border: 1px solid var(--borde);
+    /* fondo: el color fondo pagina */
+    background: var(--fondo-pagina);
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+}
+
+.boton-limpiar:hover {
+    /* fondo: el color verde suave */
+    background: var(--verde-suave);
+}
+
+/* permite desplazar la tabla en pantallas pequenas */
+.tabla-contenedor {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* scroll horizontal si el contenido no cabe */
+    overflow-x: auto;
+    /* borde: 1px solid var(--verde-suave) */
+    border: 1px solid var(--verde-suave);
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+}
+
+.tabla-inventario {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* ancho minimo de 850px */
+    min-width: 850px;
+    /* une los bordes de las celdas */
+    border-collapse: collapse;
+}
+
+/* encabezados de la tabla */
+.tabla-inventario th {
+    /* espacio interior: 14px 12px */
+    padding: 14px 12px;
+    /* fondo: el color verde suave */
+    background: var(--verde-suave);
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: .85rem */
+    font-size: .85rem;
+    /* texto a la izquierda */
+    text-align: left;
+    /* el texto no se parte en varias lineas */
+    white-space: nowrap;
+}
+
+/* datos de cada producto */
+.tabla-inventario td {
+    /* espacio interior: 13px 12px */
+    padding: 13px 12px;
+    /* color del texto: el color #374151 */
+    color: #374151;
+    /* tamano de la letra: .9rem */
+    font-size: .9rem;
+    /* borde inferior: 1px solid #ecfdf5 */
+    border-bottom: 1px solid #ecfdf5;
+}
+
+.tabla-inventario tbody tr:last-child td {
+    /* borde inferior: ninguno */
+    border-bottom: 0;
+}
+
+.tabla-inventario tbody tr:hover {
+    /* fondo: el color fondo pagina */
+    background: var(--fondo-pagina);
+}
+
+/* muestra el codigo del producto */
+.codigo-producto {
+    /* espacio interior: 5px 9px */
+    padding: 5px 9px;
+    /* esquinas redondeadas: 7px */
+    border-radius: 7px;
+    /* fondo: el color #dbeafe */
+    background: #dbeafe;
+    /* color del texto: el color #1d4ed8 */
+    color: #1d4ed8;
+    /* tamano de la letra: .82rem */
+    font-size: .82rem;
+    /* letra en negrita */
+    font-weight: bold;
+}
+
+/* tablas de datos */
+.tabla-inventario .nombre-producto {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+/* datos del producto */
+.precio-producto {
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+    /* el texto no se parte en varias lineas */
+    white-space: nowrap;
+}
+
+/* texto cuando no hay proveedor */
+.sin-proveedor {
+    /* color del texto: el color #9ca3af */
+    color: #9ca3af;
+    /* letra cursiva */
+    font-style: italic;
+}
+
+/* cantidad de entradas y salidas */
+.cantidad {
+    /* se muestra en linea pero con medidas propias */
+    display: inline-block;
+    /* ancho minimo de 36px */
+    min-width: 36px;
+    /* espacio interior: 5px 9px */
+    padding: 5px 9px;
+    /* esquinas redondeadas: 7px */
+    border-radius: 7px;
+    /* texto centrado */
+    text-align: center;
+    /* letra en negrita */
+    font-weight: bold;
+}
+
+/* estilos de cantidad entrada */
+.cantidad-entrada {
+    /* fondo: el color verde suave */
+    background: var(--verde-suave);
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+}
+
+/* estilos de cantidad salida */
+.cantidad-salida {
+    /* fondo: el color #ffedd5 */
+    background: #ffedd5;
+    /* color del texto: el color #c2410c */
+    color: #c2410c;
+}
+
+/* estado actual del producto */
+.estado {
+    /* se muestra en linea pero con medidas propias */
+    display: inline-block;
+    /* espacio interior: 6px 10px */
+    padding: 6px 10px;
+    /* esquinas redondeadas: 20px */
+    border-radius: 20px;
+    /* tamano de la letra: .8rem */
+    font-size: .8rem;
+    /* letra en negrita */
+    font-weight: bold;
+    /* el texto no se parte en varias lineas */
+    white-space: nowrap;
+}
+
+.estado-disponible {
+    /* fondo: el color verde suave */
+    background: var(--verde-suave);
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+}
+
+.estado-agotado {
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #b91c1c */
+    color: #b91c1c;
+}
+
+/* mensaje cuando la tabla no tiene registros */
+.tabla-inventario .tabla-vacia {
+    /* espacio interior: 30px */
+    padding: 30px;
+    /* color del texto: el color #6b7280 */
+    color: #6b7280;
+    /* texto centrado */
+    text-align: center;
+}
+
+/* resalta el panel de productos agotados */
+.panel-alertas {
+    /* borde superior: 4px solid #f59e0b */
+    border-top: 4px solid #f59e0b;
+}
+
+/* estilos de lista alertas */
+.lista-alertas {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 12px */
+    gap: 12px;
+}
+
+/* informacion de cada producto agotado */
+.alerta-producto {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 14px */
+    gap: 14px;
+    /* espacio interior: 16px */
+    padding: 16px;
+    /* borde: 1px solid #fecaca */
+    border: 1px solid #fecaca;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: el color #fffafa */
+    background: #fffafa;
+}
+
+/* iconos */
+.alerta-icono {
+    /* ancho de 44px */
+    width: 44px;
+    /* alto de 44px */
+    height: 44px;
+    /* no se encoge */
+    flex-shrink: 0;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #dc2626 */
+    color: #dc2626;
+    /* tamano de la letra: 24px */
+    font-size: 24px;
+}
+
+/* estilos de alerta detalle */
+.alerta-detalle {
+    /* como crece o se encoge dentro del contenedor (1) */
+    flex: 1;
+    /* ancho minimo: 0, permite que se encoja */
+    min-width: 0;
+}
+
+.alerta-detalle h4 {
+    /* espacio exterior inferior: 5px */
+    margin-bottom: 5px;
+    /* color del texto: el color #991b1b */
+    color: #991b1b;
+}
+
+.alerta-detalle p {
+    /* espacio exterior superior: 3px */
+    margin-top: 3px;
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: .85rem */
+    font-size: .85rem;
+    /* permite partir palabras largas para que no se salgan */
+    overflow-wrap: anywhere;
+}
+
+.alerta-detalle strong {
+    /* color del texto: el color #374151 */
+    color: #374151;
+}
+
+.alerta-detalle .texto-agotado {
+    /* color del texto: el color #b91c1c */
+    color: #b91c1c;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+/* mensaje cuando no hay productos agotados */
+.sin-alertas {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 14px */
+    gap: 14px;
+    /* espacio interior: 20px */
+    padding: 20px;
+    /* borde: 1px solid var(--borde) */
+    border: 1px solid var(--borde);
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: el color fondo pagina */
+    background: var(--fondo-pagina);
+}
+
+.sin-alertas-icono {
+    /* ancho de 45px */
+    width: 45px;
+    /* alto de 45px */
+    height: 45px;
+    /* no se encoge */
+    flex-shrink: 0;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* forma circular */
+    border-radius: 50%;
+    /* fondo: el color verde suave */
+    background: var(--verde-suave);
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+    /* tamano de la letra: 23px */
+    font-size: 23px;
+}
+
+.sin-alertas h4 {
+    /* color del texto: el color #166534 */
+    color: #166534;
+}
+
+.sin-alertas p {
+    /* espacio exterior superior: 3px */
+    margin-top: 3px;
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: .9rem */
+    font-size: .9rem;
+}
+
+/* acomoda las tarjetas en pantallas medianas */
+@media (max-width: 900px) {
+    .resumen-inventario {
+        /* define las columnas de la cuadricula: repeat(2, 1fr) */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* acomoda el inventario en celulares */
+@media (max-width: 700px) {
+    .resumen-inventario {
+        /* define las columnas de la cuadricula: 1fr */
+        grid-template-columns: 1fr;
+    }
+
+    .form-busqueda {
+        /* acomoda los elementos en columna */
+        flex-direction: column;
+        /* estira los elementos a todo el alto */
+        align-items: stretch;
+    }
+
+    .campo-busqueda {
+        /* ancho minimo: 0, permite que se encoja */
+        min-width: 0;
+    }
+
+    .panel-encabezado {
+        /* acomoda los elementos en columna */
+        flex-direction: column;
+        /* alinea los elementos arriba */
+        align-items: flex-start;
+    }
+
+    .alerta-producto {
+        /* pasa a la siguiente linea los elementos que no caben */
+        flex-wrap: wrap;
+        /* alinea los elementos arriba */
+        align-items: flex-start;
+    }
+
+    .alerta-producto .estado {
+        /* espacio exterior izquierdo: 58px */
+        margin-left: 58px;
+    }
+}
