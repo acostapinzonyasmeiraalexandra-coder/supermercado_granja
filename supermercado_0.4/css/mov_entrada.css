@@ -1,0 +1,1531 @@
+
+/* estilos de movimientos de entrada */
+
+/* 1. colores principales */
+:root {
+    /* variable lateral arriba: #f0fdf4 */
+    --lateral-arriba: #f0fdf4;
+    /* variable lateral abajo: #dcfce7 */
+    --lateral-abajo: #dcfce7;
+    /* variable lateral texto: #14532d */
+    --lateral-texto: #14532d;
+    /* variable lateral hover: #d1fae5 */
+    --lateral-hover: #d1fae5;
+
+    /* variable verde: #16a34a */
+    --verde: #16a34a;
+    /* variable verde oscuro: #15803d */
+    --verde-oscuro: #15803d;
+    /* variable verde suave: #dcfce7 */
+    --verde-suave: #dcfce7;
+    /* variable fondo pagina: #f0fdf4 */
+    --fondo-pagina: #f0fdf4;
+    /* variable blanco: #ffffff */
+    --blanco: #ffffff;
+    /* variable texto: #166534 */
+    --texto: #166534;
+    /* variable texto suave: #4b5563 */
+    --texto-suave: #4b5563;
+    /* variable borde: #bbf7d0 */
+    --borde: #bbf7d0;
+
+    /* variable azul: #2563eb */
+    --azul: #2563eb;
+    /* variable naranja: #ea580c */
+    --naranja: #ea580c;
+    /* variable rojo: #dc2626 */
+    --rojo: #dc2626;
+    /* variable morado: #9333ea */
+    --morado: #9333ea;
+    /* variable turquesa: #0d9488 */
+    --turquesa: #0d9488;
+    /* variable rosa: #db2777 */
+    --rosa: #db2777;
+    /* variable gris: #4b5563 */
+    --gris: #4b5563;
+
+    /* variable ancho lateral: 290px */
+    --ancho-lateral: 290px;
+    /* variable redondeo: 16px */
+    --redondeo: 16px;
+    /* variable sombra: 0 4px 14px rgba(0, 0, 0, 0.08) */
+    --sombra: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* 2. configuracion general */
+* {
+    /* el ancho y el alto incluyen el borde y el espacio interior */
+    box-sizing: border-box;
+    /* sin espacio exterior */
+    margin: 0;
+    /* sin espacio interior */
+    padding: 0;
+}
+
+/* ajustes generales de la pagina */
+html {
+    /* desplazamiento suave */
+    scroll-behavior: smooth;
+}
+
+/* estilo general del cuerpo de la pagina */
+body.pagina-entrada {
+    /* alto minimo de 100vh */
+    min-height: 100vh;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* fondo: el color fondo pagina */
+    background: var(--fondo-pagina);
+    /* color del texto: el color #243b2b */
+    color: #243b2b;
+    /* tipo de letra: "segoe ui", system-ui, -apple-system, sans... */
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    /* alto de cada linea de texto: 1.5 */
+    line-height: 1.5;
+}
+
+/* enlaces y botones */
+button,
+input,
+select,
+textarea {
+    /* usa la misma letra del contenedor */
+    font: inherit;
+}
+
+button,
+a {
+    /* quita el resaltado al tocar en el celular */
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    /* contorno del elemento: 3px solid var(--verde) */
+    outline: 3px solid var(--verde);
+    /* distancia entre el contorno y el elemento: 2px */
+    outline-offset: 2px;
+}
+
+/* iconos */
+.icono {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho de 22px */
+    width: 22px;
+    /* alto de 22px */
+    height: 22px;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+}
+
+/* estado del menu lateral cuando esta abierto */
+body.menu-abierto {
+    /* oculta lo que se sale del elemento */
+    overflow: hidden;
+}
+
+/* 3. encabezado */
+.encabezado {
+    /* se queda pegado al hacer scroll */
+    position: sticky;
+    /* distancia de 0 desde el borde superior */
+    top: 0;
+    /* nivel de capa 30 (mientras mas alto queda mas encima) */
+    z-index: 30;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 14px */
+    gap: 14px;
+    /* espacio interior: 12px 24px */
+    padding: 12px 24px;
+    /* fondo: el color blanco */
+    background: var(--blanco);
+    /* borde inferior: 1px solid var(--borde) */
+    border-bottom: 1px solid var(--borde);
+    /* sombra del elemento */
+    box-shadow: var(--sombra);
+}
+
+/* boton que abre el menu lateral */
+.boton-menu {
+    /* ancho de 44px */
+    width: 44px;
+    /* alto de 44px */
+    height: 44px;
+    /* no se encoge */
+    flex-shrink: 0;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* sin borde */
+    border: none;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: el color verde */
+    background: var(--verde);
+    /* color del texto: el color blanco */
+    color: var(--blanco);
+    /* animacion suave al cambiar: background 0.2s */
+    transition: background 0.2s;
+}
+
+.boton-menu:hover {
+    /* fondo: el color verde oscuro */
+    background: var(--verde-oscuro);
+}
+
+.boton-menu .icono {
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+/* logo del encabezado */
+.encabezado-logo img {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho de 46px */
+    width: 46px;
+    /* alto de 46px */
+    height: 46px;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+}
+
+/* texto del encabezado */
+.encabezado-texto h1 {
+    /* tamano de la letra: 1.1rem */
+    font-size: 1.1rem;
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+}
+
+.encabezado-texto p {
+    /* tamano de la letra: 0.85rem */
+    font-size: 0.85rem;
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+}
+
+/* datos del usuario en el encabezado */
+.encabezado-usuario {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+    /* espacio exterior izquierdo: auto */
+    margin-left: auto;
+}
+
+/* circulo con la inicial del usuario */
+.usuario-inicial {
+    /* ancho de 40px */
+    width: 40px;
+    /* alto de 40px */
+    height: 40px;
+    /* no se encoge */
+    flex-shrink: 0;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* forma circular */
+    border-radius: 50%;
+    /* fondo: el color verde */
+    background: var(--verde);
+    /* color del texto: el color blanco */
+    color: var(--blanco);
+    /* letra en negrita */
+    font-weight: bold;
+}
+
+/* estilos de usuario grande */
+.usuario-grande {
+    /* ancho de 48px */
+    width: 48px;
+    /* alto de 48px */
+    height: 48px;
+    /* tamano de la letra: 1.1rem */
+    font-size: 1.1rem;
+}
+
+/* datos del usuario en el encabezado */
+.encabezado-usuario p {
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: 0.85rem */
+    font-size: 0.85rem;
+}
+
+/* 4. fondo del menu */
+.fondo-menu {
+    /* queda fijo en la pantalla */
+    position: fixed;
+    /* distancia a los cuatro bordes: 0 */
+    inset: 0;
+    /* nivel de capa 40 (mientras mas alto queda mas encima) */
+    z-index: 40;
+    /* fondo: el color rgba(0, 0, 0, 0.4) */
+    background: rgba(0, 0, 0, 0.4);
+    /* transparencia (1 se ve normal, 0 invisible): 0 */
+    opacity: 0;
+    /* visibilidad: hidden */
+    visibility: hidden;
+    /* no responde a clics */
+    pointer-events: none;
+    /* animacion suave al cambiar: opacity 0.3s, visibility 0.3s */
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* estado del menu lateral cuando esta abierto */
+body.menu-abierto .fondo-menu {
+    /* transparencia (1 se ve normal, 0 invisible): 1 */
+    opacity: 1;
+    /* visibilidad: visible */
+    visibility: visible;
+    /* respuesta a clics: auto */
+    pointer-events: auto;
+}
+
+/* 5. menu lateral */
+.menu-lateral {
+    /* queda fijo en la pantalla */
+    position: fixed;
+    /* distancia de 0 desde el borde superior */
+    top: 0;
+    /* distancia de 0 desde el borde izquierdo */
+    left: 0;
+    /* distancia de 0 desde el borde inferior */
+    bottom: 0;
+    /* nivel de capa 50 (mientras mas alto queda mas encima) */
+    z-index: 50;
+    /* ancho de var(--ancho-lateral) */
+    width: var(--ancho-lateral);
+    /* ancho maximo de 85vw */
+    max-width: 85vw;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 18px */
+    gap: 18px;
+    /* espacio interior: 22px 18px */
+    padding: 22px 18px;
+    /* scroll vertical si el contenido no cabe */
+    overflow-y: auto;
+    /* fondo con degradado */
+    background: linear-gradient(180deg, #f0fdf4 0%, #e6f9ec 50%, #dcfce7 100%);
+    /* color del texto: el color lateral texto */
+    color: var(--lateral-texto);
+    /* borde derecho: 1px solid #bbf7d0 */
+    border-right: 1px solid #bbf7d0;
+    /* esquinas redondeadas: 0 22px 22px 0 */
+    border-radius: 0 22px 22px 0;
+    /* sombra del elemento */
+    box-shadow: 6px 0 28px rgba(20, 83, 45, 0.12);
+    /* mueve, gira o cambia el tamano del elemento: translatex(-105%) */
+    transform: translateX(-105%);
+    /* animacion suave al cambiar: transform 0.3s ease */
+    transition: transform 0.3s ease;
+}
+
+/* estado del menu lateral cuando esta abierto */
+body.menu-abierto .menu-lateral {
+    /* mueve, gira o cambia el tamano del elemento: translatex(0) */
+    transform: translateX(0);
+}
+
+/* parte superior del menu lateral */
+.menu-lateral-encabezado {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* separa los elementos dejando espacio entre ellos */
+    justify-content: space-between;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+}
+
+/* logo y nombre dentro del menu lateral */
+.menu-lateral-marca {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+    /* ancho minimo: 0, permite que se encoja */
+    min-width: 0;
+}
+
+.menu-lateral-marca img {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho de 46px */
+    width: 46px;
+    /* alto de 46px */
+    height: 46px;
+    /* como crece o se encoge dentro del contenedor (0 0 46px) */
+    flex: 0 0 46px;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+}
+
+.menu-lateral-marca h2 {
+    /* sin espacio exterior */
+    margin: 0;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 0.95rem */
+    font-size: 0.95rem;
+    /* alto de cada linea de texto: 1.25 */
+    line-height: 1.25;
+}
+
+.menu-lateral-marca p {
+    /* espacio exterior: 2px 0 0 */
+    margin: 2px 0 0;
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 1.05rem */
+    font-size: 1.05rem;
+    /* letra en negrita */
+    font-weight: 800;
+    /* alto de cada linea de texto: 1.2 */
+    line-height: 1.2;
+}
+
+/* boton que cierra el menu lateral */
+.boton-cerrar {
+    /* ancho de 38px */
+    width: 38px;
+    /* alto de 38px */
+    height: 38px;
+    /* no se encoge */
+    flex-shrink: 0;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0;
+    /* forma circular */
+    border-radius: 50%;
+    /* fondo: el color #ffffff */
+    background: #ffffff;
+    /* color del texto: el color #166534 */
+    color: #166534;
+}
+
+.boton-cerrar:hover {
+    /* fondo: el color #d1fae5 */
+    background: #d1fae5;
+}
+
+.boton-cerrar .icono {
+    /* efecto visual sobre el elemento: brightness(0) saturate(100%) invert(24%) s... */
+    filter: brightness(0) saturate(100%) invert(24%) sepia(28%) saturate(1200%) hue-rotate(83deg);
+}
+
+/* 6. datos del usuario en el menu */
+.menu-lateral-usuario {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 12px */
+    gap: 12px;
+    /* espacio interior: 14px */
+    padding: 14px;
+    /* esquinas redondeadas: var(--redondeo) */
+    border-radius: var(--redondeo);
+    /* fondo: el color #e6f9ec */
+    background: #e6f9ec;
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+}
+
+.menu-lateral-usuario strong {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+}
+
+.menu-lateral-usuario p {
+    /* color del texto: el color #4b6352 */
+    color: #4b6352;
+    /* tamano de la letra: 0.9rem */
+    font-size: 0.9rem;
+}
+
+.menu-lateral .menu-lateral-usuario .usuario-inicial {
+    /* fondo: el color #16a34a */
+    background: #16a34a;
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+}
+
+/* 7. enlaces del menu */
+.navegacion {
+    /* como crece o se encoge dentro del contenedor (1) */
+    flex: 1;
+}
+
+/* titulo de la lista de enlaces del menu */
+.titulo-navegacion {
+    /* espacio exterior inferior: 10px */
+    margin-bottom: 10px;
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 0.75rem */
+    font-size: 0.75rem;
+    /* letra en negrita */
+    font-weight: bold;
+    /* espacio entre letras: 1px */
+    letter-spacing: 1px;
+}
+
+/* enlaces del menu lateral */
+.lista-navegacion {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 6px */
+    gap: 6px;
+}
+
+.enlace-menu {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 12px */
+    gap: 12px;
+    /* espacio interior: 10px 12px */
+    padding: 10px 12px;
+    /* borde: 1px solid transparent */
+    border: 1px solid transparent;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: transparente */
+    background: transparent;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tipo de letra: inherit */
+    font-family: inherit;
+    /* tamano de la letra: 1rem */
+    font-size: 1rem;
+    /* grosor de la letra: 500 */
+    font-weight: 500;
+    /* texto a la izquierda */
+    text-align: left;
+    /* sin subrayado */
+    text-decoration: none;
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+    /* animacion suave al cambiar: background 0.2s, color 0.2s, border-color ... */
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.enlace-menu:hover {
+    /* fondo: el color #d1fae5 */
+    background: #d1fae5;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+}
+
+.enlace-menu.activo {
+    /* fondo: el color #dcfce7 */
+    background: #dcfce7;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* color del borde */
+    border-color: #86efac;
+    /* letra en negrita */
+    font-weight: 700;
+    /* sombra del elemento */
+    box-shadow: 0 3px 10px rgba(20, 83, 45, 0.08);
+}
+
+/* 8. iconos de colores */
+.caja-icono {
+    /* ancho de 36px */
+    width: 36px;
+    /* alto de 36px */
+    height: 36px;
+    /* como crece o se encoge dentro del contenedor (0 0 36px) */
+    flex: 0 0 36px;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+    /* fondo: el color #16a34a */
+    background: #16a34a;
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+}
+
+.caja-icono img,
+.caja-icono svg,
+.caja-icono .icono {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho de 21px */
+    width: 21px;
+    /* alto de 21px */
+    height: 21px;
+    /* ancho maximo: ocupa todo el espacio disponible */
+    max-width: 100%;
+    /* alto maximo: ocupa todo el espacio disponible */
+    max-height: 100%;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+}
+
+/* enlaces del menu lateral */
+.lista-navegacion > .enlace-menu:nth-of-type(1) .caja-icono {
+    /* fondo: el color #2563eb */
+    background: #2563eb;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(2) .caja-icono {
+    /* fondo: el color #0d9488 */
+    background: #0d9488;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(3) .caja-icono {
+    /* fondo: el color #dc2626 */
+    background: #dc2626;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(4) .caja-icono {
+    /* fondo: el color #16a34a */
+    background: #16a34a;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(5) .caja-icono {
+    /* fondo: el color #ea580c */
+    background: #ea580c;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(6) .caja-icono {
+    /* fondo: el color #7c3aed */
+    background: #7c3aed;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(7) .caja-icono {
+    /* fondo: el color #0d9488 */
+    background: #0d9488;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(8) .caja-icono {
+    /* fondo: el color #db2777 */
+    background: #db2777;
+}
+
+.lista-navegacion > .enlace-menu:nth-of-type(9) .caja-icono {
+    /* fondo: el color #4f46e5 */
+    background: #4f46e5;
+}
+
+.lista-navegacion .enlace-menu .caja-icono img.icono {
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+.lista-navegacion .enlace-menu .caja-icono svg {
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+    /* color del trazo del icono */
+    stroke: #ffffff;
+}
+
+.lista-navegacion .enlace-menu.activo .caja-icono {
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+}
+
+.lista-navegacion .enlace-menu.activo .caja-icono img.icono {
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+.lista-navegacion .enlace-menu.activo .caja-icono svg {
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+    /* color del trazo del icono */
+    stroke: #ffffff;
+}
+
+/* 9. boton para cerrar sesion */
+.form-salir {
+    /* espacio exterior superior: auto */
+    margin-top: auto;
+}
+
+.boton-salir {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+    /* espacio interior: 12px */
+    padding: 12px;
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: el color #dcfce7 */
+    background: #dcfce7;
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* letra en negrita */
+    font-weight: bold;
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+    /* animacion suave al cambiar: background 0.2s, color 0.2s */
+    transition: background 0.2s, color 0.2s;
+}
+
+.boton-salir:hover {
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #b91c1c */
+    color: #b91c1c;
+}
+
+.boton-salir .caja-icono-roja {
+    /* fondo: el color #dc2626 */
+    background: #dc2626;
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+}
+
+.boton-salir .icono {
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+/* 10. contenido principal */
+.contenido {
+    /* como crece o se encoge dentro del contenedor (1) */
+    flex: 1;
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* ancho maximo de 1150px */
+    max-width: 1150px;
+    /* espacio exterior (0 auto), auto centra el elemento */
+    margin: 0 auto;
+    /* espacio interior: 32px 24px */
+    padding: 32px 24px;
+}
+
+/* titulo de la pagina */
+.titulo-pagina {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 14px */
+    gap: 14px;
+    /* espacio exterior inferior: 24px */
+    margin-bottom: 24px;
+}
+
+.titulo-pagina h2 {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 1.8rem */
+    font-size: 1.8rem;
+    /* alto de cada linea de texto: 1.2 */
+    line-height: 1.2;
+}
+
+.titulo-pagina p {
+    /* color del texto: el color #4b6352 */
+    color: #4b6352;
+}
+
+.titulo-icono {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* como crece o se encoge dentro del contenedor (0 0 56px) */
+    flex: 0 0 56px;
+    /* ancho de 56px */
+    width: 56px;
+    /* alto de 56px */
+    height: 56px;
+    /* esquinas redondeadas: 14px */
+    border-radius: 14px;
+    /* fondo: el color #ea580c */
+    background: #ea580c;
+}
+
+.titulo-icono .icono {
+    /* ancho de 32px */
+    width: 32px;
+    /* alto de 32px */
+    height: 32px;
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+/* 11. mensajes */
+.mensaje {
+    /* espacio exterior inferior: 20px */
+    margin-bottom: 20px;
+    /* espacio interior: 12px 16px */
+    padding: 12px 16px;
+    /* borde izquierdo: 4px solid var(--verde) */
+    border-left: 4px solid var(--verde);
+    /* esquinas redondeadas: 8px */
+    border-radius: 8px;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+/* mensaje de registro o actualizacion */
+.mensaje-ok {
+    /* border-left-color: #16a34a */
+    border-left-color: #16a34a;
+    /* fondo: el color #dcfce7 */
+    background: #dcfce7;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+}
+
+/* mensaje rojo cuando se elimina */
+.mensaje-eliminado {
+    /* borde: 1px solid #fca5a5 */
+    border: 1px solid #fca5a5;
+    /* borde izquierdo: 5px solid #dc2626 */
+    border-left: 5px solid #dc2626;
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #991b1b */
+    color: #991b1b;
+}
+
+/* mensajes de error en rojo */
+.mensaje-error {
+    /* borde: 1px solid #fca5a5 */
+    border: 1px solid #fca5a5;
+    /* borde izquierdo: 5px solid #dc2626 */
+    border-left: 5px solid #dc2626;
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #991b1b */
+    color: #991b1b;
+}
+
+/* 12. paneles y formularios */
+.panel {
+    /* espacio exterior inferior: 24px */
+    margin-bottom: 24px;
+    /* espacio interior: 24px */
+    padding: 24px;
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0;
+    /* borde superior: 5px solid #16a34a */
+    border-top: 5px solid #16a34a;
+    /* esquinas redondeadas: var(--redondeo) */
+    border-radius: var(--redondeo);
+    /* fondo: el color #ffffff */
+    background: #ffffff;
+    /* sombra del elemento */
+    box-shadow: 0 4px 14px rgba(20, 83, 45, 0.08);
+}
+
+.panel-titulo {
+    /* espacio exterior inferior: 18px */
+    margin-bottom: 18px;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 1.15rem */
+    font-size: 1.15rem;
+}
+
+/* formulario */
+.formulario {
+    /* usa una cuadricula para acomodar los elementos */
+    display: grid;
+    /* define las columnas de la cuadricula: repeat(2, minmax(0, 1fr)) */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* espacio entre los elementos: 18px 20px */
+    gap: 18px 20px;
+}
+
+/* campos del formulario */
+.campo {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 6px */
+    gap: 6px;
+    /* ancho minimo: 0, permite que se encoja */
+    min-width: 0;
+}
+
+.campo-ancho {
+    /* posicion dentro de la cuadricula: 1 / -1 */
+    grid-column: 1 / -1;
+}
+
+.campo label {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 0.9rem */
+    font-size: 0.9rem;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea,
+.buscador input {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* ancho minimo: 0, permite que se encoja */
+    min-width: 0;
+    /* espacio interior: 11px 14px */
+    padding: 11px 14px;
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* fondo: el color #ffffff */
+    background: #ffffff;
+    /* color del texto: el color #243b2b */
+    color: #243b2b;
+    /* tipo de letra: inherit */
+    font-family: inherit;
+    /* tamano de la letra: 1rem */
+    font-size: 1rem;
+    /* animacion suave al cambiar: border-color 0.2s, box-shadow 0.2s */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo textarea {
+    /* alto minimo de 110px */
+    min-height: 110px;
+    /* permite cambiar el tamano: vertical */
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus,
+.buscador input:focus {
+    /* quita el contorno que pone el navegador */
+    outline: none;
+    /* color del borde */
+    border-color: #16a34a;
+    /* sombra del elemento */
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.13);
+}
+
+.campo input:disabled {
+    /* fondo: el color #f0fdf4 */
+    background: #f0fdf4;
+    /* color del texto: el color #4b6352 */
+    color: #4b6352;
+}
+
+/* mensaje de error de un campo */
+.texto-campo-error {
+    /* alto minimo de 1.2em */
+    min-height: 1.2em;
+    /* color del texto: el color #dc2626 */
+    color: #dc2626;
+    /* tamano de la letra: 0.85rem */
+    font-size: 0.85rem;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+/* botones */
+.botones {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* pasa a la siguiente linea los elementos que no caben */
+    flex-wrap: wrap;
+    /* espacio entre los elementos: 12px */
+    gap: 12px;
+}
+
+/* 13. color de las letras de cantidad */
+#cantidad {
+    /* color del texto: el color #243b2b */
+    color: #243b2b;
+    /* letra normal */
+    font-weight: 400;
+    /* color de fondo: el color #ffffff */
+    background-color: #ffffff;
+    /* color del cursor de escritura */
+    caret-color: #16a34a;
+}
+
+#cantidad::placeholder {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* letra normal */
+    font-weight: 400;
+    /* transparencia (1 se ve normal, 0 invisible): 1 */
+    opacity: 1;
+}
+
+#cantidad:focus {
+    /* color del texto: el color #243b2b */
+    color: #243b2b;
+    /* color de fondo: el color #ffffff */
+    background-color: #ffffff;
+    /* color del borde */
+    border-color: #16a34a;
+}
+
+/* 14. botones */
+.boton {
+    /* usa flexbox en linea para acomodar los elementos */
+    display: inline-flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* espacio interior: 11px 20px */
+    padding: 11px 20px;
+    /* sin borde */
+    border: none;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+    /* tipo de letra: inherit */
+    font-family: inherit;
+    /* tamano de la letra: 0.95rem */
+    font-size: 0.95rem;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+    /* texto centrado */
+    text-align: center;
+    /* sin subrayado */
+    text-decoration: none;
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+    /* animacion suave al cambiar: background 0.2s, transform 0.2s */
+    transition: background 0.2s, transform 0.2s;
+}
+
+.boton:hover {
+    /* mueve, gira o cambia el tamano del elemento: translatey(-1px) */
+    transform: translateY(-1px);
+}
+
+.boton-principal {
+    /* fondo: el color #16a34a */
+    background: #16a34a;
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+}
+
+.boton-principal:hover {
+    /* fondo: el color #15803d */
+    background: #15803d;
+}
+
+.boton-secundario {
+    /* borde: 1px solid #bbf7d0 */
+    border: 1px solid #bbf7d0;
+    /* fondo: el color #dcfce7 */
+    background: #dcfce7;
+    /* color del texto: el color #166534 */
+    color: #166534;
+}
+
+.boton-secundario:hover {
+    /* fondo: el color #d1fae5 */
+    background: #d1fae5;
+}
+
+.boton-chico {
+    /* espacio interior: 6px 12px */
+    padding: 6px 12px;
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+    /* tamano de la letra: 0.85rem */
+    font-size: 0.85rem;
+}
+
+.boton-editar {
+    /* fondo: el color #2563eb */
+    background: #2563eb;
+}
+
+.boton-editar:hover {
+    /* fondo: el color #1d4ed8 */
+    background: #1d4ed8;
+}
+
+.boton-eliminar {
+    /* fondo: el color #dc2626 */
+    background: #dc2626;
+}
+
+.boton-eliminar:hover {
+    /* fondo: el color #b91c1c */
+    background: #b91c1c;
+}
+
+/* 15. buscador */
+.buscador {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* pasa a la siguiente linea los elementos que no caben */
+    flex-wrap: wrap;
+    /* espacio entre los elementos: 12px */
+    gap: 12px;
+}
+
+.buscador input {
+    /* como crece o se encoge dentro del contenedor (1 1 240px) */
+    flex: 1 1 240px;
+}
+
+/* 16. tabla de movimientos */
+.tabla-contenedor {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* scroll horizontal si el contenido no cabe */
+    overflow-x: auto;
+    /* borde: 1px solid #dcfce7 */
+    border: 1px solid #dcfce7;
+    /* esquinas redondeadas: 12px */
+    border-radius: 12px;
+}
+
+.tabla {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* une los bordes de las celdas */
+    border-collapse: collapse;
+    /* tamano de la letra: 0.95rem */
+    font-size: 0.95rem;
+}
+
+.tabla th {
+    /* espacio interior: 12px 14px */
+    padding: 12px 14px;
+    /* fondo: el color #dcfce7 */
+    background: #dcfce7;
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 0.85rem */
+    font-size: 0.85rem;
+    /* texto a la izquierda */
+    text-align: left;
+    /* el texto no se parte en varias lineas */
+    white-space: nowrap;
+}
+
+.tabla td {
+    /* espacio interior: 12px 14px */
+    padding: 12px 14px;
+    /* borde inferior: 1px solid #bbf7d0 */
+    border-bottom: 1px solid #bbf7d0;
+    /* alineacion vertical del elemento en linea: middle */
+    vertical-align: middle;
+}
+
+.tabla tbody tr:nth-child(even) {
+    /* fondo: el color #f0fdf4 */
+    background: #f0fdf4;
+}
+
+.tabla tbody tr:hover {
+    /* fondo: el color #e6f9ec */
+    background: #e6f9ec;
+}
+
+.tabla-acciones {
+    /* el texto no se parte en varias lineas */
+    white-space: nowrap;
+}
+
+/* botones */
+.tabla-acciones .boton {
+    /* espacio exterior: 2px */
+    margin: 2px;
+}
+
+/* estilos de form eliminar */
+.form-eliminar {
+    /* se muestra en linea */
+    display: inline;
+}
+
+/* tablas de datos */
+.tabla-vacia {
+    /* espacio interior: 24px */
+    padding: 24px;
+    /* color del texto: el color #4b6352 */
+    color: #4b6352;
+    /* texto centrado */
+    text-align: center;
+}
+
+/* 17. pie de pagina */
+.pie-pagina {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* espacio exterior superior: 30px */
+    margin-top: 30px;
+    /* color de fondo: el color #ffffff */
+    background-color: #ffffff;
+    /* borde superior: 2px solid #bbf7d0 */
+    border-top: 2px solid #bbf7d0;
+}
+
+/* enlaces de ayuda del pie de pagina */
+.footer-contenido {
+    /* usa una cuadricula para acomodar los elementos */
+    display: grid;
+    /* define las columnas de la cuadricula: 1fr 1fr */
+    grid-template-columns: 1fr 1fr;
+    /* espacio entre los elementos: 60px */
+    gap: 60px;
+    /* espacio interior: 30px */
+    padding: 30px;
+}
+
+.footer-ayuda h4,
+.footer-informacion h4 {
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 15px */
+    font-size: 15px;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+    /* espacio exterior: 0 0 18px */
+    margin: 0 0 18px;
+}
+
+.footer-descripcion {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+    /* alto de cada linea de texto: 1.7 */
+    line-height: 1.7;
+    /* ancho maximo de 400px */
+    max-width: 400px;
+    /* espacio exterior: 0 0 18px */
+    margin: 0 0 18px;
+}
+
+.footer-ayuda {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* alinea los elementos arriba */
+    align-items: flex-start;
+}
+
+.footer-enlace {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+    /* espacio exterior inferior: 13px */
+    margin-bottom: 13px;
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+    /* sin subrayado */
+    text-decoration: none;
+    /* animacion suave al cambiar: color 0.2s ease */
+    transition: color 0.2s ease;
+}
+
+.footer-enlace:hover {
+    /* color del texto: el color #15803d */
+    color: #15803d;
+    /* subrayado del texto: underline */
+    text-decoration: underline;
+}
+
+.footer-icono {
+    /* usa flexbox en linea para acomodar los elementos */
+    display: inline-flex;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* ancho de 22px */
+    width: 22px;
+    /* ancho minimo de 22px */
+    min-width: 22px;
+    /* color del texto: el color #16a34a */
+    color: #16a34a;
+    /* tamano de la letra: 17px */
+    font-size: 17px;
+}
+
+/* informacion del pie de pagina */
+.footer-informacion > p {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+    /* alto de cada linea de texto: 1.7 */
+    line-height: 1.7;
+    /* espacio exterior: 0 0 17px */
+    margin: 0 0 17px;
+}
+
+.footer-informacion strong {
+    /* color del texto: el color #374151 */
+    color: #374151;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+/* nota del pie de pagina */
+.footer-nota {
+    /* espacio exterior superior: 20px */
+    margin-top: 20px;
+    /* espacio interior: 15px 18px */
+    padding: 15px 18px;
+    /* fondo: el color #f0fdf4 */
+    background: #f0fdf4;
+    /* borde: 1px solid #dcfce7 */
+    border: 1px solid #dcfce7;
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+}
+
+.footer-nota strong {
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+}
+
+.footer-nota p {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 12px */
+    font-size: 12px;
+    /* alto de cada linea de texto: 1.6 */
+    line-height: 1.6;
+    /* espacio exterior: 7px 0 0 */
+    margin: 7px 0 0;
+}
+
+/* parte inferior del pie de pagina */
+.footer-inferior {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* separa los elementos dejando espacio entre ellos */
+    justify-content: space-between;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 15px */
+    gap: 15px;
+    /* espacio interior: 16px 30px */
+    padding: 16px 30px;
+    /* borde superior: 1px solid #bbf7d0 */
+    border-top: 1px solid #bbf7d0;
+    /* fondo: el color #ffffff */
+    background: #ffffff;
+}
+
+.footer-inferior p {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 12px */
+    font-size: 12px;
+    /* alto de cada linea de texto: 1.6 */
+    line-height: 1.6;
+    /* sin espacio exterior */
+    margin: 0;
+}
+
+/* 18. ajustes para celulares */
+@media (max-width: 700px) {
+    .encabezado {
+        /* espacio entre los elementos: 10px */
+        gap: 10px;
+        /* espacio interior: 10px 14px */
+        padding: 10px 14px;
+    }
+
+    .encabezado-texto {
+        /* como crece o se encoge dentro del contenedor (1) */
+        flex: 1;
+    }
+
+    .encabezado-texto h1 {
+        /* tamano de la letra: 1rem */
+        font-size: 1rem;
+    }
+
+    .encabezado-usuario > div {
+        /* oculta el elemento */
+        display: none;
+    }
+
+    .contenido {
+        /* espacio interior: 24px 14px */
+        padding: 24px 14px;
+    }
+
+    .panel {
+        /* espacio interior: 18px */
+        padding: 18px;
+    }
+
+    .formulario {
+        /* define las columnas de la cuadricula: 1fr */
+        grid-template-columns: 1fr;
+    }
+
+    .campo-ancho {
+        /* posicion dentro de la cuadricula: auto */
+        grid-column: auto;
+    }
+
+    .titulo-pagina h2 {
+        /* tamano de la letra: 1.5rem */
+        font-size: 1.5rem;
+    }
+
+    .footer-contenido {
+        /* define las columnas de la cuadricula: 1fr */
+        grid-template-columns: 1fr;
+        /* espacio entre los elementos: 30px */
+        gap: 30px;
+        /* espacio interior: 25px 18px */
+        padding: 25px 18px;
+    }
+
+    .footer-inferior {
+        /* acomoda los elementos en columna */
+        flex-direction: column;
+        /* texto centrado */
+        text-align: center;
+        /* espacio interior: 15px 20px */
+        padding: 15px 20px;
+    }
+}
+
+/* ajustes para pantallas de hasta 480px */
+@media (max-width: 480px) {
+    .menu-lateral {
+        /* ancho de 280px */
+        width: 280px;
+        /* ancho maximo de 85vw */
+        max-width: 85vw;
+        /* espacio interior: 18px 14px */
+        padding: 18px 14px;
+    }
+
+    .encabezado-logo img {
+        /* ancho de 38px */
+        width: 38px;
+        /* alto de 38px */
+        height: 38px;
+    }
+
+    .titulo-icono {
+        /* tamano base antes de crecer o encogerse: 46px */
+        flex-basis: 46px;
+        /* ancho de 46px */
+        width: 46px;
+        /* alto de 46px */
+        height: 46px;
+    }
+
+    .titulo-icono .icono {
+        /* ancho de 27px */
+        width: 27px;
+        /* alto de 27px */
+        height: 27px;
+    }
+
+    .botones .boton {
+        /* ancho: ocupa todo el espacio disponible */
+        width: 100%;
+    }
+
+    .footer-contenido {
+        /* espacio interior: 22px 16px */
+        padding: 22px 16px;
+    }
+
+    .tabla {
+        /* tamano de la letra: 0.85rem */
+        font-size: 0.85rem;
+    }
+
+    .tabla th,
+    .tabla td {
+        /* espacio interior: 10px */
+        padding: 10px;
+    }
+}
+
+/* respetar la configuracion de movimiento del equipo */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        /* desplazamiento: auto */
+        scroll-behavior: auto !important;
+        /* sin animacion */
+        transition: none !important;
+    }
+}

@@ -1,0 +1,938 @@
+
+/* colores */
+
+:root {
+    /* variable verde: #16a34a */
+    --verde: #16a34a;
+    /* variable verde oscuro: #15803d */
+    --verde-oscuro: #15803d;
+    /* variable verde suave: #dcfce7 */
+    --verde-suave: #dcfce7;
+    /* variable fondo pagina: #f0fdf4 */
+    --fondo-pagina: #f0fdf4;
+    /* variable blanco: #ffffff */
+    --blanco: #ffffff;
+    /* variable texto: #243b2b */
+    --texto: #243b2b;
+    /* variable texto suave: #64748b */
+    --texto-suave: #64748b;
+    /* variable borde: #bbf7d0 */
+    --borde: #bbf7d0;
+    /* variable rojo: #dc2626 */
+    --rojo: #dc2626;
+    /* variable redondeo: 16px */
+    --redondeo: 16px;
+    /* variable sombra: 0 4px 14px rgba(0, 0, 0, 0.08) */
+    --sombra: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* configuracion general */
+
+* {
+    /* el ancho y el alto incluyen el borde y el espacio interior */
+    box-sizing: border-box;
+    /* sin espacio exterior */
+    margin: 0;
+    /* sin espacio interior */
+    padding: 0;
+}
+
+/* ajustes generales de la pagina */
+html {
+    /* desplazamiento suave */
+    scroll-behavior: smooth;
+}
+
+/* estilo general del cuerpo de la pagina */
+body.pagina-registro {
+    /* alto minimo de 100vh */
+    min-height: 100vh;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* fondo: el color fondo pagina */
+    background: var(--fondo-pagina);
+    /* color del texto: el color texto */
+    color: var(--texto);
+    /* tipo de letra: "segoe ui", system-ui, -apple-system, sans... */
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    /* alto de cada linea de texto: 1.5 */
+    line-height: 1.5;
+}
+
+/* enlaces y botones */
+button,
+input,
+select {
+    /* usa la misma letra del contenedor */
+    font: inherit;
+}
+
+button,
+a {
+    /* quita el resaltado al tocar en el celular */
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+    /* cursor de mano al pasar encima */
+    cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    /* contorno del elemento: 3px solid var(--verde) */
+    outline: 3px solid var(--verde);
+    /* distancia entre el contorno y el elemento: 2px */
+    outline-offset: 2px;
+}
+
+/* encabezado */
+
+.encabezado {
+    /* se queda pegado al hacer scroll */
+    position: sticky;
+    /* distancia de 0 desde el borde superior */
+    top: 0;
+    /* nivel de capa 10 (mientras mas alto queda mas encima) */
+    z-index: 10;
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 14px */
+    gap: 14px;
+    /* espacio interior: 12px 30px */
+    padding: 12px 30px;
+    /* fondo: el color blanco */
+    background: var(--blanco);
+    /* borde inferior: 1px solid var(--borde) */
+    border-bottom: 1px solid var(--borde);
+    /* sombra del elemento */
+    box-shadow: var(--sombra);
+}
+
+/* logo del encabezado */
+.encabezado-logo {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* no se encoge */
+    flex-shrink: 0;
+}
+
+.encabezado-logo img {
+    /* se muestra como bloque completo */
+    display: block;
+    /* ancho de 48px */
+    width: 48px;
+    /* alto de 48px */
+    height: 48px;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+}
+
+/* texto del encabezado */
+.encabezado-texto h1 {
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+    /* tamano de la letra: 1.1rem */
+    font-size: 1.1rem;
+    /* alto de cada linea de texto: 1.4 */
+    line-height: 1.4;
+}
+
+.encabezado-texto p {
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: 0.85rem */
+    font-size: 0.85rem;
+}
+
+
+/* contenido principal */
+
+.contenido {
+    /* como crece o se encoge dentro del contenedor (1) */
+    flex: 1;
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* ancho maximo de 1000px */
+    max-width: 1000px;
+    /* espacio exterior (0 auto), auto centra el elemento */
+    margin: 0 auto;
+    /* espacio interior: 34px 24px */
+    padding: 34px 24px;
+}
+
+/* titulo de la pagina */
+.titulo-pagina {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 14px */
+    gap: 14px;
+    /* espacio exterior inferior: 24px */
+    margin-bottom: 24px;
+}
+
+.titulo-pagina h2 {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 1.8rem */
+    font-size: 1.8rem;
+    /* alto de cada linea de texto: 1.3 */
+    line-height: 1.3;
+}
+
+.titulo-pagina p {
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* espacio exterior superior: 4px */
+    margin-top: 4px;
+}
+
+.titulo-icono {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* como crece o se encoge dentro del contenedor (0 0 58px) */
+    flex: 0 0 58px;
+    /* ancho de 58px */
+    width: 58px;
+    /* alto de 58px */
+    height: 58px;
+    /* esquinas redondeadas: 15px */
+    border-radius: 15px;
+    /* fondo: el color verde */
+    background: var(--verde);
+}
+
+.titulo-icono img {
+    /* ancho de 32px */
+    width: 32px;
+    /* alto de 32px */
+    height: 32px;
+    /* ajusta la imagen sin recortarla ni deformarla */
+    object-fit: contain;
+    /* efecto visual sobre el elemento: brightness(0) invert(1) */
+    filter: brightness(0) invert(1);
+}
+
+/* mensajes */
+
+.mensaje {
+    /* espacio exterior inferior: 20px */
+    margin-bottom: 20px;
+    /* espacio interior: 13px 16px */
+    padding: 13px 16px;
+    /* borde izquierdo: 4px solid var(--rojo) */
+    border-left: 4px solid var(--rojo);
+    /* esquinas redondeadas: 8px */
+    border-radius: 8px;
+    /* fondo: el color #fee2e2 */
+    background: #fee2e2;
+    /* color del texto: el color #991b1b */
+    color: #991b1b;
+    /* tamano de la letra: 0.95rem */
+    font-size: 0.95rem;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+/* panel del formulario */
+
+.panel {
+    /* espacio interior: 26px */
+    padding: 26px;
+    /* borde: 1px solid var(--borde) */
+    border: 1px solid var(--borde);
+    /* borde superior: 5px solid var(--verde) */
+    border-top: 5px solid var(--verde);
+    /* esquinas redondeadas: var(--redondeo) */
+    border-radius: var(--redondeo);
+    /* fondo: el color blanco */
+    background: var(--blanco);
+    /* sombra del elemento */
+    box-shadow: var(--sombra);
+}
+
+/* encabezado de la pagina */
+.panel-encabezado {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* separa los elementos dejando espacio entre ellos */
+    justify-content: space-between;
+    /* espacio entre los elementos: 16px */
+    gap: 16px;
+    /* espacio exterior inferior: 25px */
+    margin-bottom: 25px;
+    /* espacio interior inferior: 18px */
+    padding-bottom: 18px;
+    /* borde inferior: 1px solid #e5f5e9 */
+    border-bottom: 1px solid #e5f5e9;
+}
+
+.panel-encabezado h3 {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 1.2rem */
+    font-size: 1.2rem;
+}
+
+.panel-encabezado p {
+    /* espacio exterior superior: 4px */
+    margin-top: 4px;
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: 0.9rem */
+    font-size: 0.9rem;
+}
+
+/* campos del formulario */
+
+.formulario {
+    /* usa una cuadricula para acomodar los elementos */
+    display: grid;
+    /* define las columnas de la cuadricula: repeat(2, minmax(0, 1fr)) */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* espacio entre los elementos: 20px */
+    gap: 20px;
+}
+
+/* campos del formulario */
+.campo {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* espacio entre los elementos: 7px */
+    gap: 7px;
+    /* ancho minimo: 0, permite que se encoja */
+    min-width: 0;
+}
+
+.campo-ancho {
+    /* posicion dentro de la cuadricula: 1 / -1 */
+    grid-column: 1 / -1;
+}
+
+.campo label {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 0.9rem */
+    font-size: 0.9rem;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+.campo input,
+.campo select {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* ancho minimo: 0, permite que se encoja */
+    min-width: 0;
+    /* alto minimo de 46px */
+    min-height: 46px;
+    /* espacio interior: 11px 14px */
+    padding: 11px 14px;
+    /* borde: 1px solid var(--borde) */
+    border: 1px solid var(--borde);
+    /* esquinas redondeadas: 11px */
+    border-radius: 11px;
+    /* fondo: el color #ffffff */
+    background: #ffffff;
+    /* color del texto: el color texto */
+    color: var(--texto);
+    /* tamano de la letra: 0.95rem */
+    font-size: 0.95rem;
+    /* animacion suave al cambiar: border-color 0.2s, box-shadow 0.2s */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo input::placeholder {
+    /* color del texto: el color #94a3b8 */
+    color: #94a3b8;
+}
+
+.campo input:focus,
+.campo select:focus {
+    /* quita el contorno que pone el navegador */
+    outline: none;
+    /* color del borde */
+    border-color: var(--verde);
+    /* sombra del elemento */
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.13);
+}
+
+
+/* separador de datos de acceso */
+
+.separador-formulario {
+    /* posicion dentro de la cuadricula: 1 / -1 */
+    grid-column: 1 / -1;
+    /* espacio exterior superior: 8px */
+    margin-top: 8px;
+    /* espacio interior: 17px 18px */
+    padding: 17px 18px;
+    /* borde: 1px solid #dcfce7 */
+    border: 1px solid #dcfce7;
+    /* borde izquierdo: 4px solid var(--verde) */
+    border-left: 4px solid var(--verde);
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+    /* fondo: el color #f0fdf4 */
+    background: #f0fdf4;
+}
+
+.separador-formulario h3 {
+    /* color del texto: el color #14532d */
+    color: #14532d;
+    /* tamano de la letra: 1rem */
+    font-size: 1rem;
+}
+
+.separador-formulario p {
+    /* espacio exterior superior: 3px */
+    margin-top: 3px;
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: 0.85rem */
+    font-size: 0.85rem;
+}
+
+/* botones */
+
+.botones {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* pasa a la siguiente linea los elementos que no caben */
+    flex-wrap: wrap;
+    /* espacio entre los elementos: 12px */
+    gap: 12px;
+    /* espacio exterior superior: 8px */
+    margin-top: 8px;
+}
+
+.boton {
+    /* usa flexbox en linea para acomodar los elementos */
+    display: inline-flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* alto minimo de 44px */
+    min-height: 44px;
+    /* espacio interior: 11px 19px */
+    padding: 11px 19px;
+    /* borde: 1px solid transparent */
+    border: 1px solid transparent;
+    /* esquinas redondeadas: 11px */
+    border-radius: 11px;
+    /* tamano de la letra: 0.92rem */
+    font-size: 0.92rem;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+    /* texto centrado */
+    text-align: center;
+    /* sin subrayado */
+    text-decoration: none;
+    /* animacion suave al cambiar: background 0.2s, transform 0.2s */
+    transition: background 0.2s, transform 0.2s;
+}
+
+.boton:hover {
+    /* mueve, gira o cambia el tamano del elemento: translatey(-1px) */
+    transform: translateY(-1px);
+}
+
+.boton-principal {
+    /* fondo: el color verde */
+    background: var(--verde);
+    /* color del texto: el color #ffffff */
+    color: #ffffff;
+}
+
+.boton-principal:hover {
+    /* fondo: el color verde oscuro */
+    background: var(--verde-oscuro);
+}
+
+
+
+/* enlace para iniciar sesion */
+
+.texto-login {
+    /* espacio exterior superior: 22px */
+    margin-top: 22px;
+    /* color del texto: el color texto suave */
+    color: var(--texto-suave);
+    /* tamano de la letra: 0.92rem */
+    font-size: 0.92rem;
+    /* texto centrado */
+    text-align: center;
+}
+
+.texto-login a {
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+    /* sin subrayado */
+    text-decoration: none;
+}
+
+.texto-login a:hover {
+    /* subrayado del texto: underline */
+    text-decoration: underline;
+}
+
+/* pie de pagina */
+
+.pie-pagina {
+    /* ancho: ocupa todo el espacio disponible */
+    width: 100%;
+    /* espacio exterior superior: 30px */
+    margin-top: 30px;
+    /* borde superior: 2px solid var(--borde) */
+    border-top: 2px solid var(--borde);
+    /* fondo: el color #ffffff */
+    background: #ffffff;
+}
+
+/* enlaces de ayuda del pie de pagina */
+.footer-contenido {
+    /* usa una cuadricula para acomodar los elementos */
+    display: grid;
+    /* define las columnas de la cuadricula: 1fr 1fr */
+    grid-template-columns: 1fr 1fr;
+    /* espacio entre los elementos: 60px */
+    gap: 60px;
+    /* ancho maximo de 1200px */
+    max-width: 1200px;
+    /* espacio exterior (0 auto), auto centra el elemento */
+    margin: 0 auto;
+    /* espacio interior: 30px */
+    padding: 30px;
+}
+
+.footer-ayuda h4,
+.footer-informacion h4 {
+    /* espacio exterior inferior: 16px */
+    margin-bottom: 16px;
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 15px */
+    font-size: 15px;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+.footer-descripcion {
+    /* ancho maximo de 400px */
+    max-width: 400px;
+    /* espacio exterior inferior: 18px */
+    margin-bottom: 18px;
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+    /* alto de cada linea de texto: 1.7 */
+    line-height: 1.7;
+}
+
+.footer-ayuda {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* acomoda los elementos en columna */
+    flex-direction: column;
+    /* alinea los elementos arriba */
+    align-items: flex-start;
+}
+
+.footer-enlace {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* espacio entre los elementos: 10px */
+    gap: 10px;
+    /* espacio exterior inferior: 13px */
+    margin-bottom: 13px;
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+    /* sin subrayado */
+    text-decoration: none;
+    /* animacion suave al cambiar: color 0.2s */
+    transition: color 0.2s;
+}
+
+.footer-enlace:hover {
+    /* color del texto: el color verde oscuro */
+    color: var(--verde-oscuro);
+    /* subrayado del texto: underline */
+    text-decoration: underline;
+}
+
+.footer-icono {
+    /* usa flexbox en linea para acomodar los elementos */
+    display: inline-flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* centra los elementos en horizontal */
+    justify-content: center;
+    /* ancho de 22px */
+    width: 22px;
+    /* ancho minimo de 22px */
+    min-width: 22px;
+    /* color del texto: el color verde */
+    color: var(--verde);
+    /* tamano de la letra: 17px */
+    font-size: 17px;
+    /* letra en negrita */
+    font-weight: bold;
+}
+
+/* informacion del pie de pagina */
+.footer-informacion > p {
+    /* espacio exterior inferior: 17px */
+    margin-bottom: 17px;
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+    /* alto de cada linea de texto: 1.7 */
+    line-height: 1.7;
+}
+
+.footer-informacion strong {
+    /* color del texto: el color #374151 */
+    color: #374151;
+    /* grosor de la letra: 600 */
+    font-weight: 600;
+}
+
+/* nota del pie de pagina */
+.footer-nota {
+    /* espacio exterior superior: 20px */
+    margin-top: 20px;
+    /* espacio interior: 15px 18px */
+    padding: 15px 18px;
+    /* borde: 1px solid #dcfce7 */
+    border: 1px solid #dcfce7;
+    /* esquinas redondeadas: 10px */
+    border-radius: 10px;
+    /* fondo: el color #f0fdf4 */
+    background: #f0fdf4;
+}
+
+.footer-nota strong {
+    /* color del texto: el color #166534 */
+    color: #166534;
+    /* tamano de la letra: 13px */
+    font-size: 13px;
+}
+
+.footer-nota p {
+    /* espacio exterior superior: 7px */
+    margin-top: 7px;
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 12px */
+    font-size: 12px;
+    /* alto de cada linea de texto: 1.6 */
+    line-height: 1.6;
+}
+
+/* parte inferior del pie de pagina */
+.footer-inferior {
+    /* usa flexbox para acomodar los elementos */
+    display: flex;
+    /* centra los elementos en vertical */
+    align-items: center;
+    /* separa los elementos dejando espacio entre ellos */
+    justify-content: space-between;
+    /* espacio entre los elementos: 15px */
+    gap: 15px;
+    /* espacio interior: 16px 30px */
+    padding: 16px 30px;
+    /* borde superior: 1px solid var(--borde) */
+    border-top: 1px solid var(--borde);
+    /* fondo: el color #ffffff */
+    background: #ffffff;
+}
+
+.footer-inferior p {
+    /* color del texto: el color #64748b */
+    color: #64748b;
+    /* tamano de la letra: 12px */
+    font-size: 12px;
+    /* alto de cada linea de texto: 1.6 */
+    line-height: 1.6;
+}
+
+/* responsive */
+
+@media (max-width: 700px) {
+    .encabezado {
+        /* espacio entre los elementos: 10px */
+        gap: 10px;
+        /* espacio interior: 12px 15px */
+        padding: 12px 15px;
+    }
+
+    .encabezado-logo img {
+        /* ancho de 40px */
+        width: 40px;
+        /* alto de 40px */
+        height: 40px;
+    }
+
+    .encabezado-texto {
+        /* como crece o se encoge dentro del contenedor (1) */
+        flex: 1;
+        /* ancho minimo: 0, permite que se encoja */
+        min-width: 0;
+    }
+
+    .encabezado-texto h1 {
+        /* tamano de la letra: 0.95rem */
+        font-size: 0.95rem;
+    }
+
+    .encabezado-texto p {
+        /* tamano de la letra: 0.75rem */
+        font-size: 0.75rem;
+    }
+
+    .contenido {
+        /* espacio interior: 25px 14px */
+        padding: 25px 14px;
+    }
+
+    .titulo-pagina h2 {
+        /* tamano de la letra: 1.45rem */
+        font-size: 1.45rem;
+    }
+
+    .titulo-pagina p {
+        /* tamano de la letra: 0.9rem */
+        font-size: 0.9rem;
+    }
+
+    .titulo-icono {
+        /* tamano base antes de crecer o encogerse: 48px */
+        flex-basis: 48px;
+        /* ancho de 48px */
+        width: 48px;
+        /* alto de 48px */
+        height: 48px;
+    }
+
+    .titulo-icono img {
+        /* ancho de 27px */
+        width: 27px;
+        /* alto de 27px */
+        height: 27px;
+    }
+
+    .panel {
+        /* espacio interior: 19px */
+        padding: 19px;
+    }
+
+    .panel-encabezado {
+        /* alinea los elementos arriba */
+        align-items: flex-start;
+        /* acomoda los elementos en columna */
+        flex-direction: column;
+        /* espacio entre los elementos: 8px */
+        gap: 8px;
+    }
+
+    .formulario {
+        /* define las columnas de la cuadricula: 1fr */
+        grid-template-columns: 1fr;
+        /* espacio entre los elementos: 17px */
+        gap: 17px;
+    }
+
+    .campo-ancho,
+    .separador-formulario {
+        /* posicion dentro de la cuadricula: auto */
+        grid-column: auto;
+    }
+
+    .botones {
+        /* acomoda los elementos en columna */
+        flex-direction: column;
+    }
+
+    .botones .boton {
+        /* ancho: ocupa todo el espacio disponible */
+        width: 100%;
+    }
+
+    .footer-contenido {
+        /* define las columnas de la cuadricula: 1fr */
+        grid-template-columns: 1fr;
+        /* espacio entre los elementos: 30px */
+        gap: 30px;
+        /* espacio interior: 25px 20px */
+        padding: 25px 20px;
+    }
+
+    .footer-inferior {
+        /* acomoda los elementos en columna */
+        flex-direction: column;
+        /* texto centrado */
+        text-align: center;
+        /* espacio interior: 16px 20px */
+        padding: 16px 20px;
+    }
+}
+/* asterisco de campo obligatorio */
+.obligatorio {
+    color: #000000;
+    font-weight: 700;
+}
+
+/* ========== ventana de aviso (modal) ========== */
+
+/* fondo oscuro que cubre toda la pantalla */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    animation: modal-aparecer 0.2s ease;
+}
+
+/* caja blanca del mensaje */
+.modal__caja {
+    width: 100%;
+    max-width: 340px;
+    padding: 30px 25px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    animation: modal-subir 0.25s ease;
+}
+
+/* circulo con el icono */
+.modal__icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 15px;
+    font-size: 34px;
+    font-weight: 700;
+    border-radius: 50%;
+    border: 4px solid;
+}
+
+/* icono de exito (chulo verde) */
+.modal__icono--ok {
+    color: #218344;
+    border-color: #218344;
+}
+
+/* icono de error (x roja) */
+.modal__icono--error {
+    color: #d93025;
+    border-color: #d93025;
+}
+
+/* titulo de la ventana */
+.modal__titulo {
+    margin: 0 0 8px;
+    font-size: 22px;
+    color: #203629;
+}
+
+/* mensaje de la ventana */
+.modal__texto {
+    margin: 0 0 22px;
+    font-size: 14px;
+    color: #718074;
+}
+
+/* boton aceptar */
+.modal__boton {
+    width: 100%;
+    min-height: 45px;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.modal__boton--ok {
+    background-color: #218344;
+}
+
+.modal__boton--ok:hover {
+    background-color: #14532d;
+}
+
+.modal__boton--error {
+    background-color: #d93025;
+}
+
+.modal__boton--error:hover {
+    background-color: #b3261e;
+}
+
+/* animacion: el fondo aparece */
+@keyframes modal-aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* animacion: la caja sube suavemente */
+@keyframes modal-subir {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* quita las animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        /* desplazamiento: auto */
+        scroll-behavior: auto !important;
+        /* sin animacion */
+        transition: none !important;
+    }
+}
